@@ -128,7 +128,7 @@ export function HomePrinciplesSection() {
 export function HomeFinalCta() {
   return (
     <CTA
-      title="Have a system your business has outgrown - or an idea worth building properly?"
+      title="Have a system your business has outgrown or an idea worth building properly?"
       description="Tell us what is slowing your team down. We will help you identify the clearest next step."
     />
   )
