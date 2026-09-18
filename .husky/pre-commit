@@ -1,0 +1,16 @@
+if ! command -v node >/dev/null 2>&1 && command -v fnm >/dev/null 2>&1; then
+  eval "$(fnm env --shell bash)"
+  fnm use --silent-if-unchanged
+fi
+
+if ! command -v node >/dev/null 2>&1; then
+  echo "husky - Node.js is not available. Install Node.js or initialize your version manager." >&2
+  exit 127
+fi
+
+if ! command -v pnpm >/dev/null 2>&1; then
+  echo "husky - pnpm is not available. Enable Corepack or install pnpm." >&2
+  exit 127
+fi
+
+pnpm exec lint-staged
