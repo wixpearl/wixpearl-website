@@ -8,9 +8,13 @@ export function Footer() {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="bg-card border-t">
+    <footer className="surface-subtle relative overflow-hidden border-x-0 border-b-0">
+      <div
+        aria-hidden="true"
+        className="pearl-grid pointer-events-none absolute inset-x-0 top-0 h-full opacity-12"
+      />
       <Container>
-        <div className="grid gap-12 py-14 sm:py-16 lg:grid-cols-[1.5fr_1fr_1fr] lg:gap-16">
+        <div className="relative grid gap-12 py-14 sm:py-16 lg:grid-cols-[1.5fr_1fr_1fr] lg:gap-16">
           <div className="max-w-md">
             <Logo />
 

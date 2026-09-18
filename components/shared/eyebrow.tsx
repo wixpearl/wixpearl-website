@@ -18,7 +18,11 @@ export function Eyebrow({ tone = 'primary', className, ...props }: EyebrowProps)
   return (
     <p
       data-slot="eyebrow"
-      className={cn('text-sm font-semibold tracking-[0.14em] uppercase', tones[tone], className)}
+      className={cn(
+        'font-mono text-[0.7rem] font-semibold tracking-[0.17em] uppercase',
+        tones[tone],
+        className
+      )}
       {...props}
     />
   )

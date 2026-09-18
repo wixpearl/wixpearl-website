@@ -13,6 +13,7 @@ export function ThemeToggle() {
       type="button"
       variant="ghost"
       size="icon"
+      className="border-border/85 bg-card/65 rounded-full border shadow-sm"
       aria-label="Toggle color theme"
       onClick={() => {
         setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')

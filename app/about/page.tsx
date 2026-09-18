@@ -1,8 +1,8 @@
 import { Container } from '@/components/layout/container'
-import { Grid } from '@/components/layout/grid'
 import { Section } from '@/components/layout/section'
 import { CTA } from '@/components/shared/cta'
 import { PageHeader } from '@/components/shared/page-header'
+import { PrinciplesGrid } from '@/components/shared/principles-grid'
 import { principles } from '@/config/content'
 import { createMetadata } from '@/lib/metadata'
 
@@ -48,14 +48,7 @@ export default function AboutPage() {
       </Section>
       <Section className="bg-card/55 border-y">
         <Container>
-          <Grid columns={4} gap="lg">
-            {principles.map((principle) => (
-              <div key={principle.title} className="bg-background rounded-2xl border p-6">
-                <h2 className="text-xl font-semibold">{principle.title}</h2>
-                <p className="text-muted-foreground mt-3 leading-7">{principle.description}</p>
-              </div>
-            ))}
-          </Grid>
+          <PrinciplesGrid items={principles} variant="cards" />
         </Container>
       </Section>
       <CTA

@@ -4,7 +4,7 @@ import { expect, test } from '@playwright/test'
 test('homepage exposes the core proposition and working CTAs', async ({ page }) => {
   await page.goto('/')
   await expect(page.getByRole('heading', { level: 1 })).toContainText(
-    'Software engineered around your business'
+    'Software shaped around how your business works'
   )
   await page.getByRole('link', { name: 'Discuss your project' }).click()
   await expect(page).toHaveURL(/\/contact$/)
@@ -63,4 +63,58 @@ test('core pages have no automatically detectable accessibility violations', asy
     const results = await new AxeBuilder({ page }).analyze()
     expect(results.violations, `Accessibility violations on ${path}`).toEqual([])
   }
+})
+
+test('cinematic hero keeps its capability nodes visible', async ({ page }) => {
+  await page.goto('/')
+
+  const hero = page.locator('[data-slot="hero-system"]')
+  await expect(hero).toBeVisible()
+  await expect(hero.getByRole('listitem')).toHaveCount(4)
+  await expect(hero.getByText('Software', { exact: true })).toBeVisible()
+  await expect(hero.getByText('Practical AI', { exact: true })).toBeVisible()
+  await expect(hero.getByText('Automation', { exact: true })).toBeVisible()
+  await expect(hero.getByText('Consulting', { exact: true })).toBeVisible()
+})
+
+test('cinematic hero respects reduced-motion preferences', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' })
+  await page.goto('/')
+
+  const orbit = page.locator('.hero-orbit')
+  await expect(orbit).toBeVisible()
+  await expect(orbit).toHaveCSS('animation-name', 'none')
+  await expect(page.locator('.hero-pearl-breathe').first()).toHaveCSS('animation-name', 'none')
+  await expect(page.locator('[data-slot="hero-system"]')).toContainText('One connected system')
+})
+
+test('core routes do not create horizontal overflow', async ({ page }) => {
+  for (const path of ['/', '/services', '/about', '/contact']) {
+    await page.goto(path)
+    const overflow = await page.evaluate(
+      () => document.documentElement.scrollWidth > document.documentElement.clientWidth
+    )
+    expect(overflow, `Horizontal overflow on ${path}`).toBe(false)
+  }
+})
+
+test('theme control switches the visual system to dark mode', async ({ page, isMobile }) => {
+  test.skip(isMobile, 'Desktop theme control is hidden behind mobile navigation.')
+  await page.emulateMedia({ colorScheme: 'light' })
+  await page.goto('/')
+  await page.getByRole('button', { name: 'Toggle color theme' }).click()
+  await expect(page.locator('html')).toHaveClass(/dark/)
+})
+
+test('primary content remains available without JavaScript', async ({ browser }) => {
+  const context = await browser.newContext({ javaScriptEnabled: false })
+  const page = await context.newPage()
+
+  await page.goto('http://127.0.0.1:3002/')
+  await expect(page.getByRole('heading', { level: 1 })).toContainText(
+    'Software shaped around how your business works'
+  )
+  await expect(page.getByRole('link', { name: 'Discuss your project' })).toBeVisible()
+
+  await context.close()
 })

@@ -1,6 +1,6 @@
 import { Analytics } from '@vercel/analytics/next'
 import { SpeedInsights } from '@vercel/speed-insights/next'
-import { Geist_Mono, Inter } from 'next/font/google'
+import { Fraunces, Geist_Mono, Inter } from 'next/font/google'
 import { ThemeProvider } from 'next-themes'
 
 import { Footer } from '@/components/layout/footer'
@@ -23,6 +23,12 @@ const inter = Inter({
 const geistMono = Geist_Mono({
   subsets: ['latin'],
   variable: '--font-geist-mono',
+  display: 'swap',
+})
+
+const fraunces = Fraunces({
+  subsets: ['latin'],
+  variable: '--font-fraunces',
   display: 'swap',
 })
 
@@ -58,8 +64,8 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   colorScheme: 'light dark',
   themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#faf8f4' },
-    { media: '(prefers-color-scheme: dark)', color: '#171725' },
+    { media: '(prefers-color-scheme: light)', color: '#f8f5ee' },
+    { media: '(prefers-color-scheme: dark)', color: '#111525' },
   ],
 }
 
@@ -69,13 +75,13 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
       lang="en"
       data-scroll-behavior="smooth"
       suppressHydrationWarning
-      className={cn('h-full antialiased', inter.variable, geistMono.variable)}
+      className={cn('h-full antialiased', inter.variable, geistMono.variable, fraunces.variable)}
     >
       <body className="flex min-h-full flex-col">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem enableColorScheme>
           <a
             href="#main-content"
-            className="bg-background text-foreground focus:ring-ring sr-only z-[100] rounded-md px-4 py-2 focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:ring-2"
+            className="bg-background text-foreground focus:ring-ring sr-only z-100 rounded-md px-4 py-2 focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:ring-2"
           >
             Skip to content
           </a>

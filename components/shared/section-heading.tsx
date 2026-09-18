@@ -58,7 +58,12 @@ export function SectionHeading({
       <Stack gap="sm" align={align === 'center' ? 'center' : 'start'}>
         {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
 
-        <Heading className={cn('font-semibold tracking-tight text-balance', titleSizes[size])}>
+        <Heading
+          className={cn(
+            'font-display leading-[1.08] font-semibold tracking-[-0.03em] text-balance',
+            titleSizes[size]
+          )}
+        >
           {title}
         </Heading>
 

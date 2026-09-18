@@ -73,8 +73,13 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
               <h2 className="text-2xl font-semibold">Approved outcomes</h2>
               <div className="mt-6 grid gap-4 sm:grid-cols-2">
                 {caseStudy.outcomes.map((outcome) => (
-                  <div key={outcome.label} className="bg-card rounded-xl border p-5">
-                    <p className="text-2xl font-semibold">{outcome.value}</p>
+                  <div
+                    key={outcome.label}
+                    className="pearl-surface interactive-surface rounded-2xl p-5"
+                  >
+                    <p className="font-display text-primary text-3xl font-semibold">
+                      {outcome.value}
+                    </p>
                     <p className="text-muted-foreground mt-1 text-sm">{outcome.label}</p>
                   </div>
                 ))}

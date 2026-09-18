@@ -37,12 +37,16 @@ export function MobileNavigation() {
       <dialog
         ref={dialogRef}
         aria-labelledby="mobile-navigation-title"
-        className="text-foreground m-0 ml-auto h-full max-h-none w-[min(90vw,24rem)] max-w-none border-l bg-transparent p-0 backdrop:bg-black/35"
+        className="text-foreground border-border m-0 ml-auto h-full max-h-none w-[min(90vw,24rem)] max-w-none border-l bg-transparent p-0 backdrop:bg-(--ink)/60 backdrop:backdrop-blur-sm"
         onClick={(event) => {
           if (event.target === event.currentTarget) closeNavigation()
         }}
       >
-        <div className="bg-background flex min-h-full flex-col shadow-2xl">
+        <div className="bg-background relative flex min-h-full flex-col overflow-hidden shadow-2xl">
+          <div
+            aria-hidden="true"
+            className="pearl-grid pointer-events-none absolute inset-0 opacity-15"
+          />
           <div className="flex h-16 items-center justify-between border-b px-4">
             <Logo />
             <button
@@ -59,7 +63,7 @@ export function MobileNavigation() {
             Main navigation
           </h2>
 
-          <nav aria-label="Mobile navigation" className="flex flex-1 flex-col px-4 py-6">
+          <nav aria-label="Mobile navigation" className="relative flex flex-1 flex-col px-4 py-6">
             {siteConfig.navigation.map((item) => {
               const isActive = item.href === '/' ? pathname === '/' : pathname.startsWith(item.href)
 

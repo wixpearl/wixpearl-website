@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react'
 
-import { Container } from '@/components/layout/container'
+import { StatusPanel } from '@/components/shared/status-panel'
 import { Button } from '@/components/ui/button'
 
 export default function ErrorPage({
@@ -18,17 +18,15 @@ export default function ErrorPage({
   }, [error])
 
   return (
-    <Container>
-      <div className="mx-auto flex min-h-[60vh] max-w-2xl flex-col items-center justify-center py-20 text-center">
-        <p className="text-primary font-mono text-sm font-semibold">Something went wrong</p>
-        <h1 className="mt-5 text-4xl font-semibold tracking-tight">We could not load this page</h1>
-        <p className="text-muted-foreground mt-4 leading-7">
-          Please try again. If the problem continues, you can contact WixPearl directly.
-        </p>
-        <Button type="button" size="lg" className="mt-8" onClick={reset}>
+    <StatusPanel
+      eyebrow="Something went wrong"
+      title="We could not load this page"
+      description="Please try again. If the problem continues, you can contact WixPearl directly."
+      action={
+        <Button type="button" size="lg" onClick={reset}>
           Try again
         </Button>
-      </div>
-    </Container>
+      }
+    />
   )
 }

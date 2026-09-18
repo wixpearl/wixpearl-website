@@ -76,7 +76,10 @@ export default async function ServicePage({ params }: ServicePageProps) {
             </div>
             <div className="space-y-4">
               {service.capabilities.map((capability) => (
-                <div key={capability} className="bg-background flex gap-3 rounded-xl border p-4">
+                <div
+                  key={capability}
+                  className="pearl-surface interactive-surface flex gap-3 rounded-2xl p-4"
+                >
                   <CheckCircle2
                     className="text-primary mt-0.5 size-5 shrink-0"
                     aria-hidden="true"
@@ -94,7 +97,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
             <h2 className="text-3xl font-semibold tracking-tight">Designed for useful outcomes</h2>
             <div className="mt-8 grid gap-5 sm:grid-cols-3">
               {service.outcomes.map((outcome) => (
-                <div key={outcome} className="bg-card rounded-2xl border p-6">
+                <div key={outcome} className="pearl-surface interactive-surface rounded-2xl p-6">
                   <p className="leading-7">{outcome}</p>
                 </div>
               ))}

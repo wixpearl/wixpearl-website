@@ -13,7 +13,7 @@ interface ContactCardProps {
 export function ContactCard({ title, value, description, href, icon: Icon }: ContactCardProps) {
   const content = (
     <>
-      <div className="bg-primary/10 text-primary flex size-10 shrink-0 items-center justify-center rounded-lg">
+      <div className="surface-subtle text-primary flex size-11 shrink-0 items-center justify-center rounded-xl">
         <Icon className="size-5" aria-hidden="true" />
       </div>
 
@@ -33,12 +33,12 @@ export function ContactCard({ title, value, description, href, icon: Icon }: Con
     return (
       <a
         href={href}
-        className="bg-card hover:border-primary/40 flex gap-4 rounded-xl border p-5 transition-colors"
+        className="pearl-surface interactive-surface flex gap-4 rounded-2xl p-5 sm:p-6"
       >
         {content}
       </a>
     )
   }
 
-  return <div className="bg-card flex gap-4 rounded-xl border p-5">{content}</div>
+  return <div className="pearl-surface flex gap-4 rounded-2xl p-5 sm:p-6">{content}</div>
 }

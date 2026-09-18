@@ -33,6 +33,17 @@ export interface CaseStudy {
   published: boolean
 }
 
+export interface DeliveryStep {
+  number: string
+  title: string
+  description: string
+}
+
+export interface Principle {
+  title: string
+  description: string
+}
+
 export const services = [
   {
     slug: 'custom-software-development',
@@ -150,7 +161,7 @@ export const deliverySteps = [
     title: 'Improve',
     description: 'We support the system in production and evolve it using evidence from real use.',
   },
-] as const
+] as const satisfies readonly DeliveryStep[]
 
 export const principles = [
   {
@@ -173,7 +184,7 @@ export const principles = [
     description:
       'You work directly with engineers who communicate clearly and care about the business result.',
   },
-] as const
+] as const satisfies readonly Principle[]
 
 export const technologies = [
   'Next.js',
