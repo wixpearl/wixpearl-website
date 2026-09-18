@@ -62,7 +62,10 @@ export function PageHeader({
           <Stack gap="md" align={isCentered ? 'center' : 'start'}>
             {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
 
-            <h1 className="font-display max-w-3xl text-4xl leading-[1.02] font-semibold tracking-[-0.04em] text-balance sm:text-5xl lg:text-6xl">
+            <h1
+              data-particle-text
+              className="font-display max-w-3xl text-4xl leading-[1.02] font-semibold tracking-[-0.04em] text-balance sm:text-5xl lg:text-6xl"
+            >
               {title}
             </h1>
 

@@ -18,7 +18,11 @@ export function PrinciplesGrid({ items, variant }: PrinciplesGridProps) {
             <p className="text-muted-foreground mt-3 leading-7">{principle.description}</p>
           </div>
         ) : (
-          <div key={principle.title} className="pearl-surface interactive-surface rounded-2xl p-6">
+          <div
+            key={principle.title}
+            data-particle-surface
+            className="pearl-surface interactive-surface rounded-2xl p-6"
+          >
             <span aria-hidden="true" className="ambient-orb mb-5 block size-3 rounded-full" />
             <h2 className="text-2xl font-semibold">{principle.title}</h2>
             <p className="text-muted-foreground mt-3 leading-7">{principle.description}</p>

@@ -40,6 +40,7 @@ export function DeliverySteps({ items, variant }: DeliveryStepsProps) {
         {items.map((step) => (
           <li key={step.number} className="group/step relative">
             <article
+              data-particle-surface
               className={cn(
                 'pearl-surface relative flex h-full flex-col overflow-hidden rounded-2xl',
                 'p-6 sm:p-7',
@@ -71,7 +72,7 @@ export function DeliverySteps({ items, variant }: DeliveryStepsProps) {
                 <span
                   className={cn(
                     'grid size-10 shrink-0 place-items-center rounded-xl',
-                    'border-primary/15 bg-primary/[0.06] border',
+                    'border-primary/15 bg-primary/6 border',
                     'text-primary font-mono text-sm font-semibold tracking-wider tabular-nums',
                     'transition-all duration-400 ease-out',
                     'group-hover/step:border-primary/30 group-hover/step:bg-primary/12',

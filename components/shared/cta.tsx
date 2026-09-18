@@ -35,6 +35,7 @@ export function CTA({
     <Section spacing="lg" className={className}>
       <Container>
         <div
+          data-particle-surface
           className={cn(
             'group/cta relative isolate overflow-hidden rounded-[2.5rem]',
             // Generous, escalating padding at each breakpoint
@@ -103,6 +104,7 @@ export function CTA({
             {/* Left: heading + description */}
             <Stack gap="md" className="max-w-2xl">
               <h2
+                data-particle-text
                 className={cn(
                   'font-display text-3xl font-semibold tracking-[-0.02em] text-balance sm:text-4xl lg:text-[2.75rem] lg:leading-[1.05]',
                   isLuminous && 'text-white'
@@ -126,6 +128,7 @@ export function CTA({
             {/* Right: action buttons */}
             <Cluster className="shrink-0">
               <Link
+                data-particle-cta
                 href={primaryHref}
                 className={cn(
                   buttonVariants({ size: 'lg' }),

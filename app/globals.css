@@ -142,6 +142,7 @@
 
   body {
     @apply bg-background text-foreground selection:bg-primary/20;
+    isolation: isolate;
     background-image:
       radial-gradient(
         circle at 88% -8%,
@@ -351,6 +352,87 @@
       background-color 240ms ease;
   }
 
+  .particle-field {
+    opacity: 0.72;
+  }
+
+  .particle-field canvas {
+    opacity: 0;
+    transition: opacity 700ms ease;
+  }
+
+  .particle-field[data-ready='true'] canvas {
+    opacity: 1;
+  }
+
+  .particle-static-plate {
+    opacity: 0.78;
+    transition: opacity 700ms ease;
+  }
+
+  .particle-field[data-ready='true'][data-motion='animated'] .particle-static-plate {
+    opacity: 0;
+  }
+
+  [data-particle-surface],
+  [data-particle-cta] {
+    --particle-local-x: 50%;
+    --particle-local-y: 50%;
+    --particle-strength: 0;
+    isolation: isolate;
+  }
+
+  [data-particle-surface]::after,
+  [data-particle-cta]::after {
+    position: absolute;
+    z-index: 5;
+    inset: 0;
+    padding: 1px;
+    pointer-events: none;
+    content: '';
+    border-radius: inherit;
+    background: radial-gradient(
+      14rem circle at var(--particle-local-x) var(--particle-local-y),
+      color-mix(in oklch, var(--cyan) 74%, white),
+      color-mix(in oklch, var(--primary) 58%, transparent) 32%,
+      transparent 72%
+    );
+    opacity: 0;
+    transition: opacity 220ms ease;
+    -webkit-mask:
+      linear-gradient(black 0 0) content-box,
+      linear-gradient(black 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+
+  [data-particle-surface][data-particle-active='true']::after,
+  [data-particle-cta][data-particle-active='true']::after {
+    opacity: var(--particle-strength);
+  }
+
+  [data-particle-surface][data-particle-active='true'] {
+    border-color: color-mix(in oklch, var(--primary) 42%, var(--border));
+  }
+
+  [data-particle-text] {
+    transition:
+      color 220ms ease,
+      text-shadow 220ms ease;
+  }
+
+  [data-particle-text][data-particle-active='true'] {
+    text-shadow:
+      0 0 0.55rem color-mix(in oklch, var(--primary) 30%, transparent),
+      0 0 1.45rem color-mix(in oklch, var(--cyan) 18%, transparent);
+  }
+
+  [data-particle-cta][data-particle-active='true'] {
+    box-shadow:
+      0 0 0 1px color-mix(in oklch, var(--cyan) 17%, transparent),
+      0 12px 30px -18px color-mix(in oklch, var(--primary) 54%, transparent);
+  }
+
   @media (hover: hover) and (pointer: fine) {
     .interactive-surface:hover {
       transform: translateY(-3px);
@@ -493,6 +575,15 @@
     animation: none !important;
   }
 
+  .particle-field[data-motion='static'] canvas {
+    display: none;
+  }
+
+  [data-particle-surface]::after,
+  [data-particle-cta]::after {
+    display: none;
+  }
+
   .interactive-surface {
     transform: none !important;
   }
@@ -512,6 +603,12 @@
 }
 
 @media (forced-colors: active) {
+  .particle-field,
+  [data-particle-surface]::after,
+  [data-particle-cta]::after {
+    display: none;
+  }
+
   .text-gradient {
     color: CanvasText;
     background: none;

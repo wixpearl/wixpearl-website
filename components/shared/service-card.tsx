@@ -35,6 +35,7 @@ export function ServiceCard({
       className={cn('group/card relative block h-full', 'focus-visible:outline-none', className)}
     >
       <article
+        data-particle-surface
         className={cn(
           // Container — generous breathing space
           'relative flex h-full flex-col overflow-hidden rounded-2xl',

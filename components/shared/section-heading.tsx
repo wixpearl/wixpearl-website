@@ -59,6 +59,7 @@ export function SectionHeading({
         {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
 
         <Heading
+          data-particle-text
           className={cn(
             'font-display leading-[1.08] font-semibold tracking-[-0.03em] text-balance',
             titleSizes[size]

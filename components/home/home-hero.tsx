@@ -25,7 +25,10 @@ export function HomeHero() {
               Software engineering · AI · Automation
             </Eyebrow>
             <Stack gap="lg">
-              <h1 className="font-display max-w-4xl text-5xl leading-[0.98] font-semibold tracking-[-0.048em] text-balance sm:text-6xl lg:text-7xl xl:text-[5.1rem]">
+              <h1
+                data-particle-text
+                className="font-display max-w-4xl text-5xl leading-[0.98] font-semibold tracking-[-0.048em] text-balance sm:text-6xl lg:text-7xl xl:text-[5.1rem]"
+              >
                 Software shaped around{' '}
                 <span className="text-gradient">how your business works.</span>
               </h1>
