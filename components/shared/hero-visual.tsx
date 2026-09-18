@@ -1,4 +1,7 @@
 import { Bot, Braces, Cog, Radio, ShieldCheck } from 'lucide-react'
+import Image from 'next/image'
+
+import pearlLogo from '@/public/brand/logo-mark-transparent.png'
 
 const capabilities = [
   {
@@ -137,14 +140,22 @@ export function HeroVisual() {
             aria-hidden="true"
             className="hero-pearl-breathe absolute size-44 rounded-full bg-violet-500/18 blur-3xl"
           />
-          <div className="ambient-orb relative grid size-24 place-items-center rounded-full shadow-[0_0_44px_-8px_oklch(0.67_0.22_292/0.62)] ring-1 ring-violet-200/38 sm:size-28">
-            <span
+          <div className="hero-pearl relative grid size-24 place-items-center rounded-full sm:size-28">
+            <Image
               aria-hidden="true"
-              className="absolute top-3 left-4 h-6 w-10 rounded-full bg-white/22 blur-md"
+              alt=""
+              className="hero-pearl-logo-glow absolute w-[74%]"
+              sizes="(min-width: 640px) 5.25rem, 4.5rem"
+              src={pearlLogo}
             />
-            <span className="font-display relative text-2xl font-semibold tracking-[-0.08em] text-white sm:text-3xl">
-              WP
-            </span>
+            <Image
+              data-slot="hero-pearl-logo"
+              alt=""
+              className="hero-pearl-logo relative z-2 w-[74%]"
+              sizes="(min-width: 640px) 5.25rem, 4.5rem"
+              src={pearlLogo}
+            />
+            <span aria-hidden="true" className="hero-pearl-sheen absolute inset-0 z-3" />
           </div>
           <span className="mt-4 font-mono text-[0.62rem] tracking-[0.14em] text-white/52 uppercase">
             Engineered together

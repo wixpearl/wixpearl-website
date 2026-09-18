@@ -247,6 +247,95 @@
       inset 0.3rem 0.3rem 0.7rem color-mix(in oklch, white 70%, transparent);
   }
 
+  .hero-pearl {
+    isolation: isolate;
+    overflow: hidden;
+    border: 1px solid color-mix(in oklch, white 72%, var(--pearl));
+    background:
+      radial-gradient(
+        circle at 27% 22%,
+        white 0 3%,
+        oklch(0.98 0.018 290 / 0.94) 9%,
+        transparent 27%
+      ),
+      radial-gradient(circle at 72% 73%, oklch(0.78 0.12 218 / 0.42), transparent 43%),
+      radial-gradient(circle at 38% 65%, oklch(0.86 0.1 326 / 0.5), transparent 54%),
+      linear-gradient(
+        145deg,
+        oklch(0.985 0.018 92),
+        oklch(0.88 0.085 296) 55%,
+        oklch(0.72 0.16 287)
+      );
+    box-shadow:
+      0 0 2.75rem -0.35rem oklch(0.67 0.22 292 / 0.68),
+      0 0 0 0.16rem oklch(0.82 0.08 294 / 0.14),
+      inset 0.45rem 0.5rem 0.85rem oklch(1 0 0 / 0.72),
+      inset -0.65rem -0.8rem 1.1rem oklch(0.36 0.18 286 / 0.42),
+      inset 0 -0.16rem 0.35rem oklch(0.78 0.11 218 / 0.36);
+  }
+
+  .hero-pearl::before {
+    position: absolute;
+    z-index: 4;
+    top: 11%;
+    left: 17%;
+    width: 47%;
+    height: 24%;
+    content: '';
+    border-radius: 999px;
+    background: linear-gradient(
+      105deg,
+      oklch(1 0 0 / 0.88),
+      oklch(0.96 0.04 300 / 0.28) 68%,
+      transparent
+    );
+    filter: blur(0.18rem);
+    transform: rotate(-22deg);
+  }
+
+  .hero-pearl::after {
+    position: absolute;
+    z-index: 4;
+    right: 14%;
+    bottom: 8%;
+    width: 55%;
+    height: 13%;
+    content: '';
+    border-radius: 999px;
+    background: radial-gradient(ellipse, oklch(0.93 0.055 211 / 0.58), transparent 72%);
+    filter: blur(0.22rem);
+    transform: rotate(-12deg);
+  }
+
+  .hero-pearl-logo {
+    opacity: 0.86;
+    filter: saturate(1.35) brightness(1.22) drop-shadow(0 0 0.28rem oklch(0.68 0.22 292 / 0.72));
+  }
+
+  .hero-pearl-logo-glow {
+    z-index: 1;
+    opacity: 0.58;
+    filter: saturate(1.7) brightness(2.25) blur(0.38rem);
+  }
+
+  .hero-pearl-sheen {
+    overflow: hidden;
+    border-radius: inherit;
+  }
+
+  .hero-pearl-sheen::before {
+    position: absolute;
+    top: -24%;
+    bottom: -24%;
+    left: -44%;
+    width: 27%;
+    content: '';
+    background: linear-gradient(90deg, transparent, oklch(1 0 0 / 0.68), transparent);
+    filter: blur(0.18rem);
+    transform: translate3d(-220%, 0, 0) rotate(17deg);
+    animation: hero-pearl-sheen 7.5s ease-in-out 1.4s infinite;
+  }
+
   .text-gradient {
     color: transparent;
     background: linear-gradient(110deg, var(--foreground) 10%, var(--primary) 62%, var(--cyan));
@@ -334,6 +423,18 @@
   }
 }
 
+@keyframes hero-pearl-sheen {
+  0%,
+  24% {
+    transform: translate3d(-220%, 0, 0) rotate(17deg);
+  }
+
+  48%,
+  100% {
+    transform: translate3d(590%, 0, 0) rotate(17deg);
+  }
+}
+
 @keyframes hero-connector-sweep {
   from {
     stroke-dashoffset: 110;
@@ -386,6 +487,7 @@
   .animate-signal,
   .hero-orbit,
   .hero-pearl-breathe,
+  .hero-pearl-sheen::before,
   .hero-connector-sweep,
   .typing-caret {
     animation: none !important;
