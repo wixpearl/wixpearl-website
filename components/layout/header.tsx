@@ -55,7 +55,7 @@ export function Header({ className }: HeaderProps) {
         >
           {/* Brand */}
           <div className="flex shrink-0 items-center transition-opacity duration-300 hover:opacity-85">
-            <Logo />
+            <Logo priority />
           </div>
 
           {/* Desktop navigation — centered for visual balance */}

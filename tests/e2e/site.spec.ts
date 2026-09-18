@@ -10,6 +10,15 @@ test('homepage exposes the core proposition and working CTAs', async ({ page }) 
   await expect(page).toHaveURL(/\/contact$/)
 })
 
+test('shared brand logo renders its mark and accessible wordmark', async ({ page }) => {
+  await page.goto('/')
+
+  const logo = page.locator('header').getByRole('link', { name: 'WixPearl home' })
+  await expect(logo).toBeVisible()
+  await expect(logo).toContainText('WixPearl')
+  await expect(logo.locator('[data-slot="logo-mark"]')).toBeVisible()
+})
+
 test('service navigation and detail routes work', async ({ page }) => {
   await page.goto('/services')
   await page
@@ -75,6 +84,7 @@ test('cinematic hero keeps its capability nodes visible', async ({ page }) => {
   await expect(hero.getByText('Practical AI', { exact: true })).toBeVisible()
   await expect(hero.getByText('Automation', { exact: true })).toBeVisible()
   await expect(hero.getByText('Consulting', { exact: true })).toBeVisible()
+  await expect(hero.locator('[data-slot="hero-pearl-logo"]')).toBeVisible()
 })
 
 test('cinematic hero respects reduced-motion preferences', async ({ page }) => {
@@ -85,6 +95,18 @@ test('cinematic hero respects reduced-motion preferences', async ({ page }) => {
   await expect(orbit).toBeVisible()
   await expect(orbit).toHaveCSS('animation-name', 'none')
   await expect(page.locator('.hero-pearl-breathe').first()).toHaveCSS('animation-name', 'none')
+  await expect(
+    page.locator('.hero-pearl-sheen').first(),
+    'Pearl sheen should remain visible'
+  ).toBeVisible()
+  await expect
+    .poll(() =>
+      page
+        .locator('.hero-pearl-sheen')
+        .first()
+        .evaluate((element) => getComputedStyle(element, '::before').animationName)
+    )
+    .toBe('none')
   await expect(page.locator('[data-slot="hero-system"]')).toContainText('One connected system')
 })
 
