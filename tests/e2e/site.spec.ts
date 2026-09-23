@@ -79,26 +79,66 @@ test('cinematic hero keeps its capability nodes visible', async ({ page }) => {
 
   const hero = page.locator('[data-slot="hero-system"]')
   await expect(hero).toBeVisible()
+  await expect(hero).toHaveCount(1)
   await expect(hero.getByRole('listitem')).toHaveCount(4)
   await expect(hero.getByText('Software', { exact: true })).toBeVisible()
   await expect(hero.getByText('Practical AI', { exact: true })).toBeVisible()
   await expect(hero.getByText('Automation', { exact: true })).toBeVisible()
   await expect(hero.getByText('Consulting', { exact: true })).toBeVisible()
-  await expect(hero.locator('[data-slot="hero-pearl-logo"]')).toBeVisible()
+  await expect(hero.locator('[data-slot="hero-pearl-logo"]')).toHaveCount(1)
+})
+
+test('hero pearl becomes an interactive decorative particle system', async ({ page }) => {
+  await page.goto('/')
+
+  const host = page.locator('[data-particle-host]')
+  const logo = page.locator('[data-particles-hero-logo]')
+  const canvas = page.locator('canvas[data-particles-target]')
+
+  await expect(host).toHaveAttribute('data-particles-ready', 'true', { timeout: 20_000 })
+  await expect(host).toHaveAttribute('data-particles-motion', 'animated')
+  await expect(canvas).toHaveCount(1)
+  await expect(canvas).toHaveAttribute('aria-hidden', 'true')
+  await expect(canvas).toHaveAttribute('tabindex', '-1')
+  await expect(canvas).toHaveCSS('pointer-events', 'none')
+  await expect(logo).toHaveCSS('visibility', 'hidden')
+
+  const bounds = await logo.boundingBox()
+  expect(bounds).not.toBeNull()
+  if (!bounds) return
+
+  await page.mouse.move(bounds.x - 12, bounds.y + bounds.height / 2)
+  await expect(canvas).toHaveAttribute('data-particles-active', 'false')
+  await page.mouse.move(bounds.x + bounds.width / 2, bounds.y + bounds.height / 2)
+  await expect(canvas).toHaveAttribute('data-particles-active', 'true')
+  await expect(logo).toHaveAttribute('data-particles-active', 'true')
+  await page.mouse.move(bounds.x + bounds.width + 12, bounds.y + bounds.height / 2)
+  await expect(canvas).toHaveAttribute('data-particles-active', 'false')
+
+  await page.getByRole('link', { name: 'Explore services' }).click()
+  await expect(page).toHaveURL(/\/services$/)
+  await expect(page.locator('canvas[data-particles-target]')).toHaveCount(0)
+
+  await page.goBack()
+  await expect(host).toHaveAttribute('data-particles-ready', 'true', { timeout: 20_000 })
+  await expect(page.locator('canvas[data-particles-target]')).toHaveCount(1)
 })
 
 test('cinematic hero respects reduced-motion preferences', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' })
   await page.goto('/')
 
-  const orbit = page.locator('.hero-orbit')
-  await expect(orbit).toBeVisible()
-  await expect(orbit).toHaveCSS('animation-name', 'none')
+  const hero = page.locator('[data-slot="hero-system"]')
+  await expect(hero).toContainText('One connected system')
+  await expect(page.locator('[data-particle-host]')).toHaveAttribute(
+    'data-particles-motion',
+    'static'
+  )
+  await expect(page.locator('canvas[data-particles-target]')).toHaveCount(0)
+  await expect(page.locator('[data-particles-hero-logo]')).toBeVisible()
+  await expect(page.locator('.hero-orbit')).toHaveCSS('animation-name', 'none')
   await expect(page.locator('.hero-pearl-breathe').first()).toHaveCSS('animation-name', 'none')
-  await expect(
-    page.locator('.hero-pearl-sheen').first(),
-    'Pearl sheen should remain visible'
-  ).toBeVisible()
+  await expect(page.locator('.hero-pearl-sheen').first()).toBeVisible()
   await expect
     .poll(() =>
       page
@@ -107,7 +147,56 @@ test('cinematic hero respects reduced-motion preferences', async ({ page }) => {
         .evaluate((element) => getComputedStyle(element, '::before').animationName)
     )
     .toBe('none')
-  await expect(page.locator('[data-slot="hero-system"]')).toContainText('One connected system')
+})
+
+test('hero pearl keeps its original fallback when data saving is enabled', async ({ page }) => {
+  await page.addInitScript(() => {
+    Object.defineProperty(navigator, 'connection', {
+      configurable: true,
+      value: { saveData: true },
+    })
+  })
+  await page.goto('/')
+
+  await expect(page.locator('[data-particle-host]')).toHaveAttribute(
+    'data-particles-ready',
+    'false'
+  )
+  await expect(page.locator('canvas[data-particles-target]')).toHaveCount(0)
+  await expect(page.locator('[data-particles-hero-logo]')).toBeVisible()
+})
+
+test('hero pearl keeps its original fallback when WebGL2 is unavailable', async ({ page }) => {
+  await page.addInitScript(() => {
+    Object.defineProperty(HTMLCanvasElement.prototype, 'getContext', {
+      configurable: true,
+      value() {
+        return null
+      },
+    })
+  })
+  await page.goto('/')
+
+  await expect(page.locator('[data-particle-host]')).toHaveAttribute(
+    'data-particles-ready',
+    'false'
+  )
+  await expect(page.locator('canvas[data-particles-target]')).toHaveCount(0)
+  await expect(page.locator('[data-particles-hero-logo]')).toBeVisible()
+})
+
+test('particle illumination follows the active card only', async ({ page, isMobile }) => {
+  test.skip(isMobile, 'Pointer illumination is intentionally disabled for coarse pointers.')
+  await page.goto('/services')
+  await expect(page.locator('html')).toHaveAttribute('data-surface-illumination', 'ready')
+
+  const card = page.locator('[data-particle-surface]').first()
+  await card.hover({ position: { x: 36, y: 36 } })
+  await expect(card).toHaveAttribute('data-particle-active', 'true')
+  await expect(card).toHaveCSS('--particle-local-x', /px/)
+
+  await page.mouse.move(2, 2)
+  await expect(card).not.toHaveAttribute('data-particle-active', 'true')
 })
 
 test('core routes do not create horizontal overflow', async ({ page }) => {
@@ -128,11 +217,12 @@ test('theme control switches the visual system to dark mode', async ({ page, isM
   await expect(page.locator('html')).toHaveClass(/dark/)
 })
 
-test('primary content remains available without JavaScript', async ({ browser }) => {
+test('primary content remains available without JavaScript', async ({ browser, baseURL }) => {
   const context = await browser.newContext({ javaScriptEnabled: false })
   const page = await context.newPage()
 
-  await page.goto('http://127.0.0.1:3002/')
+  if (!baseURL) throw new Error('Playwright baseURL must be configured')
+  await page.goto(baseURL, { waitUntil: 'domcontentloaded' })
   await expect(page.getByRole('heading', { level: 1 })).toContainText(
     'Software shaped around how your business works'
   )

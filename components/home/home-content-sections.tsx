@@ -1,3 +1,5 @@
+import { cn } from 'cn'
+
 import { Container } from '@/components/layout/container'
 import { Section } from '@/components/layout/section'
 import { Stack } from '@/components/layout/stack'
@@ -84,7 +86,17 @@ export function TechnologySection() {
               aria-hidden="true"
               className="bg-primary/6 pointer-events-none absolute -top-16 left-1/2 -z-10 size-72 -translate-x-1/2 rounded-full blur-[100px]"
             />
-            <div className="border-border/60 bg-card/40 relative rounded-2xl border p-6 shadow-[0_1px_2px_0_color-mix(in_oklch,var(--ink)_3%,transparent)] backdrop-blur-sm sm:p-8">
+            <div
+              data-particle-surface
+              className={cn(
+                'pearl-surface relative flex h-full flex-col overflow-hidden rounded-2xl',
+                'p-6 sm:p-7',
+                'shadow-[0_1px_0_0_color-mix(in_oklch,var(--border)_60%,transparent)_inset]',
+                'transition-all duration-400 ease-out',
+                'hover:border-primary/25 hover:-translate-y-1',
+                'hover:shadow-[0_1px_0_0_color-mix(in_oklch,var(--border)_60%,transparent)_inset,0_24px_48px_-24px_color-mix(in_oklch,var(--primary)_28%,transparent)]'
+              )}
+            >
               <span
                 aria-hidden="true"
                 className="via-primary/40 pointer-events-none absolute inset-x-8 top-0 h-px bg-linear-to-r from-transparent to-transparent"

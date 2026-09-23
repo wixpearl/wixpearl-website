@@ -32,6 +32,7 @@ export function ContactCard({ title, value, description, href, icon: Icon }: Con
   if (href) {
     return (
       <a
+        data-particle-surface
         href={href}
         className="pearl-surface interactive-surface flex gap-4 rounded-2xl p-5 sm:p-6"
       >
@@ -40,5 +41,9 @@ export function ContactCard({ title, value, description, href, icon: Icon }: Con
     )
   }
 
-  return <div className="pearl-surface flex gap-4 rounded-2xl p-5 sm:p-6">{content}</div>
+  return (
+    <div data-particle-surface className="pearl-surface flex gap-4 rounded-2xl p-5 sm:p-6">
+      {content}
+    </div>
+  )
 }

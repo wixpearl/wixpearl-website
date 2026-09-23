@@ -10,6 +10,7 @@ export function GlobalDeliverySection() {
     <Section spacing="md">
       <Container>
         <div
+          data-particle-surface
           className={cn(
             'pearl-surface group/globe relative isolate overflow-hidden rounded-[2.5rem]',
             'px-8 py-12 sm:px-12 sm:py-14 lg:px-16 lg:py-16',
@@ -41,7 +42,10 @@ export function GlobalDeliverySection() {
                 <Globe2 className="text-primary size-3.5" aria-hidden="true" />
                 Sri Lankan roots, global delivery
               </Eyebrow>
-              <h2 className="font-display mt-6 text-3xl font-semibold tracking-[-0.02em] text-balance sm:text-4xl lg:text-[2.5rem] lg:leading-[1.08]">
+              <h2
+                data-particle-text
+                className="font-display mt-6 text-3xl font-semibold tracking-[-0.02em] text-balance sm:text-4xl lg:text-[2.5rem] lg:leading-[1.08]"
+              >
                 Close collaboration wherever your business operates.
               </h2>
             </div>

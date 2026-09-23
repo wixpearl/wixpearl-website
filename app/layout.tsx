@@ -6,6 +6,7 @@ import { ThemeProvider } from 'next-themes'
 import { Footer } from '@/components/layout/footer'
 import { Header } from '@/components/layout/header'
 import { JsonLd } from '@/components/shared/json-ld'
+import { SurfaceIllumination } from '@/components/shared/surface-illumination'
 import { siteConfig } from '@/config/site'
 import { cn } from '@/lib/utils'
 
@@ -85,8 +86,9 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
           >
             Skip to content
           </a>
+          <SurfaceIllumination />
           <Header />
-          <main id="main-content" className="flex-1">
+          <main id="main-content" className="relative z-10 flex-1">
             {children}
           </main>
           <Footer />

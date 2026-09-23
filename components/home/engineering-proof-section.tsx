@@ -26,6 +26,7 @@ export function EngineeringProofSection() {
     <Section>
       <Container>
         <div
+          data-particle-surface
           className={cn(
             'surface-dark relative isolate overflow-hidden rounded-[2rem]',
             'px-8 py-12 sm:px-12 sm:py-16 lg:px-16 lg:py-20',
