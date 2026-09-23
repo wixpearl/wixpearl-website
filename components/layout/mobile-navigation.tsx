@@ -7,7 +7,7 @@ import { useRef } from 'react'
 
 import { Logo } from '@/components/shared/logo'
 import { ThemeToggle } from '@/components/shared/theme-toggle'
-import { buttonVariants } from '@/components/ui/button'
+import { Button, buttonVariants } from '@/components/ui/button'
 import { siteConfig } from '@/config/site'
 import { cn } from '@/lib/utils'
 
@@ -25,14 +25,15 @@ export function MobileNavigation() {
 
   return (
     <>
-      <button
-        type="button"
+      <Button
         aria-label="Open navigation"
-        className={buttonVariants({ variant: 'ghost', size: 'icon' })}
+        size="icon"
+        variant="ghost"
+        className="rounded-full border bg-[oklch(0.125_0.032_267)]/10 shadow-sm hover:bg-white/5 dark:hover:bg-white/5"
         onClick={openNavigation}
       >
         <Menu className="size-5" aria-hidden="true" />
-      </button>
+      </Button>
 
       <dialog
         ref={dialogRef}
