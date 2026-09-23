@@ -6,7 +6,7 @@ import { ThemeProvider } from 'next-themes'
 import { Footer } from '@/components/layout/footer'
 import { Header } from '@/components/layout/header'
 import { JsonLd } from '@/components/shared/json-ld'
-import { ParticleField } from '@/components/shared/particle-field'
+import { SurfaceIllumination } from '@/components/shared/surface-illumination'
 import { siteConfig } from '@/config/site'
 import { cn } from '@/lib/utils'
 
@@ -86,7 +86,7 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
           >
             Skip to content
           </a>
-          <ParticleField />
+          <SurfaceIllumination />
           <Header />
           <main id="main-content" className="relative z-10 flex-1">
             {children}

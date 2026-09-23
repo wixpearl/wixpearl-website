@@ -79,6 +79,7 @@ test('cinematic hero keeps its capability nodes visible', async ({ page }) => {
 
   const hero = page.locator('[data-slot="hero-system"]')
   await expect(hero).toBeVisible()
+  await expect(hero).toHaveCount(1)
   await expect(hero.getByRole('listitem')).toHaveCount(4)
   await expect(hero.getByText('Software', { exact: true })).toBeVisible()
   await expect(hero.getByText('Practical AI', { exact: true })).toBeVisible()
@@ -91,14 +92,11 @@ test('cinematic hero respects reduced-motion preferences', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' })
   await page.goto('/')
 
-  const orbit = page.locator('.hero-orbit')
-  await expect(orbit).toBeVisible()
-  await expect(orbit).toHaveCSS('animation-name', 'none')
+  const hero = page.locator('[data-slot="hero-system"]')
+  await expect(hero).toContainText('One connected system')
+  await expect(page.locator('.hero-orbit')).toHaveCSS('animation-name', 'none')
   await expect(page.locator('.hero-pearl-breathe').first()).toHaveCSS('animation-name', 'none')
-  await expect(
-    page.locator('.hero-pearl-sheen').first(),
-    'Pearl sheen should remain visible'
-  ).toBeVisible()
+  await expect(page.locator('.hero-pearl-sheen').first()).toBeVisible()
   await expect
     .poll(() =>
       page
@@ -107,46 +105,12 @@ test('cinematic hero respects reduced-motion preferences', async ({ page }) => {
         .evaluate((element) => getComputedStyle(element, '::before').animationName)
     )
     .toBe('none')
-  await expect(page.locator('[data-slot="hero-system"]')).toContainText('One connected system')
-
-  const particleField = page.locator('[data-slot="particle-field"]')
-  await expect(particleField).toHaveAttribute('data-motion', 'static')
-  await expect(particleField.locator('canvas')).toHaveCSS('display', 'none')
-})
-
-test('particle field stays decorative and persists across navigation', async ({
-  page,
-  isMobile,
-}) => {
-  await page.goto('/')
-
-  const particleField = page.locator('[data-slot="particle-field"]')
-  await expect(particleField).toHaveCount(1)
-  await expect(particleField).toHaveAttribute('aria-hidden', 'true')
-  await expect(particleField).toHaveCSS('pointer-events', 'none')
-  await expect(particleField).toHaveAttribute('data-motion', 'animated')
-  await expect(particleField).toHaveAttribute('data-quality', isMobile ? 'medium' : 'high')
-
-  await particleField.evaluate((element) => {
-    ;(element as HTMLElement & { particleInstance?: string }).particleInstance = 'persistent'
-  })
-  await page.getByRole('link', { name: 'Explore services' }).click()
-  await expect(page).toHaveURL(/\/services$/)
-  await expect(page.locator('[data-slot="particle-field"]')).toHaveCount(1)
-  await expect
-    .poll(() =>
-      page
-        .locator('[data-slot="particle-field"]')
-        .evaluate(
-          (element) => (element as HTMLElement & { particleInstance?: string }).particleInstance
-        )
-    )
-    .toBe('persistent')
 })
 
 test('particle illumination follows the active card only', async ({ page, isMobile }) => {
   test.skip(isMobile, 'Pointer illumination is intentionally disabled for coarse pointers.')
   await page.goto('/services')
+  await expect(page.locator('html')).toHaveAttribute('data-surface-illumination', 'ready')
 
   const card = page.locator('[data-particle-surface]').first()
   await card.hover({ position: { x: 36, y: 36 } })
@@ -155,15 +119,6 @@ test('particle illumination follows the active card only', async ({ page, isMobi
 
   await page.mouse.move(2, 2)
   await expect(card).not.toHaveAttribute('data-particle-active', 'true')
-})
-
-test('mobile particle field uses the reduced quality tier', async ({ page, isMobile }) => {
-  test.skip(!isMobile, 'The reduced particle tier is selected for coarse pointers.')
-  await page.goto('/')
-  await expect(page.locator('[data-slot="particle-field"]')).toHaveAttribute(
-    'data-quality',
-    'medium'
-  )
 })
 
 test('core routes do not create horizontal overflow', async ({ page }) => {
@@ -184,11 +139,12 @@ test('theme control switches the visual system to dark mode', async ({ page, isM
   await expect(page.locator('html')).toHaveClass(/dark/)
 })
 
-test('primary content remains available without JavaScript', async ({ browser }) => {
+test('primary content remains available without JavaScript', async ({ browser, baseURL }) => {
   const context = await browser.newContext({ javaScriptEnabled: false })
   const page = await context.newPage()
 
-  await page.goto('http://127.0.0.1:3002/')
+  if (!baseURL) throw new Error('Playwright baseURL must be configured')
+  await page.goto(baseURL, { waitUntil: 'domcontentloaded' })
   await expect(page.getByRole('heading', { level: 1 })).toContainText(
     'Software shaped around how your business works'
   )
