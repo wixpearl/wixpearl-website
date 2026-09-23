@@ -144,22 +144,20 @@ export function HeroVisual() {
             <Image
               aria-hidden="true"
               alt=""
-              className="hero-pearl-logo-glow absolute w-[74%]"
+              className="hero-pearl-logo-glow absolute w-[88%]"
               sizes="(min-width: 640px) 5.25rem, 4.5rem"
               src={pearlLogo}
             />
             <Image
+              data-particles-hero-logo
               data-slot="hero-pearl-logo"
               alt=""
-              className="hero-pearl-logo relative z-2 w-[74%]"
+              className="hero-pearl-logo relative z-2 w-[88%]"
               sizes="(min-width: 640px) 5.25rem, 4.5rem"
               src={pearlLogo}
             />
             <span aria-hidden="true" className="hero-pearl-sheen absolute inset-0 z-3" />
           </div>
-          <span className="mt-4 font-mono text-[0.62rem] tracking-[0.14em] text-white/52 uppercase">
-            Engineered together
-          </span>
         </div>
 
         <ul className="contents">

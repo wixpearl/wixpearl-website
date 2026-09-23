@@ -1,6 +1,7 @@
 import { ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 
+import { HeroParticlesGL } from '@/components/home/hero-particles-gl'
 import { Container } from '@/components/layout/container'
 import { Stack } from '@/components/layout/stack'
 import { Eyebrow } from '@/components/shared/eyebrow'
@@ -9,8 +10,14 @@ import { buttonVariants } from '@/components/ui/button'
 
 export function HomeHero() {
   return (
-    <div data-particle-host className="relative isolate">
-      {/* <HomepageParticleField /> */}
+    <div
+      data-particle-host
+      data-particles-active="false"
+      data-particles-motion="static"
+      data-particles-ready="false"
+      className="relative isolate"
+    >
+      <HeroParticlesGL />
       <div className="relative z-10">
         <section className="relative isolate overflow-hidden py-18 sm:py-24 lg:py-30">
           <div
@@ -30,7 +37,7 @@ export function HomeHero() {
                 <Stack gap="lg">
                   <h1
                     data-particle-text
-                    className="font-display max-w-4xl text-5xl leading-[0.98] font-semibold tracking-[-0.048em] text-balance sm:text-6xl lg:text-7xl xl:text-[5.1rem]"
+                    className="font-display max-w-4xl text-5xl leading-[0.98] font-semibold tracking-[-0.048em] text-balance text-white sm:text-6xl lg:text-7xl xl:text-[5.1rem]"
                   >
                     Software shaped around{' '}
                     <span className="text-gradient">how your business works.</span>
