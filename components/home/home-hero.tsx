@@ -37,7 +37,7 @@ export function HomeHero() {
                 <Stack gap="lg">
                   <h1
                     data-particle-text
-                    className="font-display max-w-4xl text-5xl leading-[0.98] font-semibold tracking-[-0.048em] text-balance text-white sm:text-6xl lg:text-7xl xl:text-[5.1rem]"
+                    className="font-display max-w-4xl text-5xl leading-[0.98] font-semibold tracking-[-0.048em] text-balance sm:text-6xl lg:text-7xl xl:text-[5.1rem]"
                   >
                     Software shaped around{' '}
                     <span className="text-gradient">how your business works.</span>

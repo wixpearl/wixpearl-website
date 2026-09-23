@@ -16,7 +16,7 @@ export function Navigation({ className }: NavigationProps) {
   return (
     <nav
       aria-label="Primary navigation"
-      className={cn('hidden items-center gap-7 lg:flex', className)}
+      className={cn('hidden items-center gap-7 md:flex', className)}
     >
       {siteConfig.navigation.map((item) => {
         const isActive = item.href === '/' ? pathname === '/' : pathname.startsWith(item.href)

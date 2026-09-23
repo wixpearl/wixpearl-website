@@ -13,7 +13,7 @@ export function ThemeToggle() {
       type="button"
       variant="ghost"
       size="icon"
-      className="border-border/85 bg-card/65 rounded-full border shadow-sm"
+      className="rounded-full border bg-[oklch(0.125_0.032_267)]/10 shadow-sm hover:bg-white/5 dark:hover:bg-white/5"
       aria-label="Toggle color theme"
       onClick={() => {
         setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')
