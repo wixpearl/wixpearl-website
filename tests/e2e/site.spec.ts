@@ -85,7 +85,43 @@ test('cinematic hero keeps its capability nodes visible', async ({ page }) => {
   await expect(hero.getByText('Practical AI', { exact: true })).toBeVisible()
   await expect(hero.getByText('Automation', { exact: true })).toBeVisible()
   await expect(hero.getByText('Consulting', { exact: true })).toBeVisible()
-  await expect(hero.locator('[data-slot="hero-pearl-logo"]')).toBeVisible()
+  await expect(hero.locator('[data-slot="hero-pearl-logo"]')).toHaveCount(1)
+})
+
+test('hero pearl becomes an interactive decorative particle system', async ({ page }) => {
+  await page.goto('/')
+
+  const host = page.locator('[data-particle-host]')
+  const logo = page.locator('[data-particles-hero-logo]')
+  const canvas = page.locator('canvas[data-particles-target]')
+
+  await expect(host).toHaveAttribute('data-particles-ready', 'true', { timeout: 20_000 })
+  await expect(host).toHaveAttribute('data-particles-motion', 'animated')
+  await expect(canvas).toHaveCount(1)
+  await expect(canvas).toHaveAttribute('aria-hidden', 'true')
+  await expect(canvas).toHaveAttribute('tabindex', '-1')
+  await expect(canvas).toHaveCSS('pointer-events', 'none')
+  await expect(logo).toHaveCSS('visibility', 'hidden')
+
+  const bounds = await logo.boundingBox()
+  expect(bounds).not.toBeNull()
+  if (!bounds) return
+
+  await page.mouse.move(bounds.x - 12, bounds.y + bounds.height / 2)
+  await expect(canvas).toHaveAttribute('data-particles-active', 'false')
+  await page.mouse.move(bounds.x + bounds.width / 2, bounds.y + bounds.height / 2)
+  await expect(canvas).toHaveAttribute('data-particles-active', 'true')
+  await expect(logo).toHaveAttribute('data-particles-active', 'true')
+  await page.mouse.move(bounds.x + bounds.width + 12, bounds.y + bounds.height / 2)
+  await expect(canvas).toHaveAttribute('data-particles-active', 'false')
+
+  await page.getByRole('link', { name: 'Explore services' }).click()
+  await expect(page).toHaveURL(/\/services$/)
+  await expect(page.locator('canvas[data-particles-target]')).toHaveCount(0)
+
+  await page.goBack()
+  await expect(host).toHaveAttribute('data-particles-ready', 'true', { timeout: 20_000 })
+  await expect(page.locator('canvas[data-particles-target]')).toHaveCount(1)
 })
 
 test('cinematic hero respects reduced-motion preferences', async ({ page }) => {
@@ -94,6 +130,12 @@ test('cinematic hero respects reduced-motion preferences', async ({ page }) => {
 
   const hero = page.locator('[data-slot="hero-system"]')
   await expect(hero).toContainText('One connected system')
+  await expect(page.locator('[data-particle-host]')).toHaveAttribute(
+    'data-particles-motion',
+    'static'
+  )
+  await expect(page.locator('canvas[data-particles-target]')).toHaveCount(0)
+  await expect(page.locator('[data-particles-hero-logo]')).toBeVisible()
   await expect(page.locator('.hero-orbit')).toHaveCSS('animation-name', 'none')
   await expect(page.locator('.hero-pearl-breathe').first()).toHaveCSS('animation-name', 'none')
   await expect(page.locator('.hero-pearl-sheen').first()).toBeVisible()
@@ -105,6 +147,42 @@ test('cinematic hero respects reduced-motion preferences', async ({ page }) => {
         .evaluate((element) => getComputedStyle(element, '::before').animationName)
     )
     .toBe('none')
+})
+
+test('hero pearl keeps its original fallback when data saving is enabled', async ({ page }) => {
+  await page.addInitScript(() => {
+    Object.defineProperty(navigator, 'connection', {
+      configurable: true,
+      value: { saveData: true },
+    })
+  })
+  await page.goto('/')
+
+  await expect(page.locator('[data-particle-host]')).toHaveAttribute(
+    'data-particles-ready',
+    'false'
+  )
+  await expect(page.locator('canvas[data-particles-target]')).toHaveCount(0)
+  await expect(page.locator('[data-particles-hero-logo]')).toBeVisible()
+})
+
+test('hero pearl keeps its original fallback when WebGL2 is unavailable', async ({ page }) => {
+  await page.addInitScript(() => {
+    Object.defineProperty(HTMLCanvasElement.prototype, 'getContext', {
+      configurable: true,
+      value() {
+        return null
+      },
+    })
+  })
+  await page.goto('/')
+
+  await expect(page.locator('[data-particle-host]')).toHaveAttribute(
+    'data-particles-ready',
+    'false'
+  )
+  await expect(page.locator('canvas[data-particles-target]')).toHaveCount(0)
+  await expect(page.locator('[data-particles-hero-logo]')).toBeVisible()
 })
 
 test('particle illumination follows the active card only', async ({ page, isMobile }) => {
