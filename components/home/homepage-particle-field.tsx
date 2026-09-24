@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from 'react'
 
-import type { ParticleFieldController } from '@/graphics/particle-field/types'
+import type { ParticleFieldController } from '@/graphics/particle-field-in-house/types'
 
 const fallbackNodes = [
   ['5%', '12%', 'h-40 w-64 -rotate-12', 'bg-[#168cff]/14'],
@@ -27,7 +27,7 @@ export function HomepageParticleField() {
     let idleHandle = 0
 
     const start = () => {
-      void import('@/graphics/particle-field/particle-field').then(
+      void import('@/graphics/particle-field-in-house/particle-field').then(
         async ({ createParticleField }) => {
           if (lifecycle.disposed) return
           const nextController = await createParticleField(root, canvas, host)
@@ -58,7 +58,7 @@ export function HomepageParticleField() {
         ref={rootRef}
         data-slot="homepage-particle-field"
         data-backend="static"
-        data-quality="high"
+        data-quality="low"
         data-particle-count="0"
         data-motion="static"
         data-ready="false"

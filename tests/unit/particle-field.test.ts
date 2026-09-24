@@ -3,27 +3,27 @@ import { describe, expect, it } from 'vitest'
 import {
   assertParticleConfig,
   particleFieldConfig,
-} from '@/graphics/particle-field/particle-config'
+} from '@/graphics/particle-field-in-house/particle-config'
 import {
   createParticleInput,
   decayPointerInput,
   pulseStrength,
   triggerParticlePulse,
   updatePointerInput,
-} from '@/graphics/particle-field/particle-interaction'
+} from '@/graphics/particle-field-in-house/particle-interaction'
 import {
   countForBackend,
   nextLowerQuality,
   selectInitialQuality,
   selectParticleBackend,
   shouldLowerQuality,
-} from '@/graphics/particle-field/particle-quality'
+} from '@/graphics/particle-field-in-house/particle-quality'
 import {
   clampFrameDelta,
   getParticleFieldState,
   isOutsideOverscan,
   sampleIdleAnchor,
-} from '@/graphics/particle-field/particle-state'
+} from '@/graphics/particle-field-in-house/particle-state'
 
 const capableDesktop = {
   coarsePointer: false,

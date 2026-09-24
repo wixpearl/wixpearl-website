@@ -8,22 +8,28 @@ import { Eyebrow } from '@/components/shared/eyebrow'
 import { HeroVisual } from '@/components/shared/hero-visual'
 import { buttonVariants } from '@/components/ui/button'
 
+import { GlyphMatrix } from '../ui/glyph-matrix'
+
 export function HomeHero() {
   return (
-    <div
-      data-particle-host
-      data-particles-active="false"
-      data-particles-motion="static"
-      data-particles-ready="false"
-      className="relative isolate"
-    >
+    <div data-particle-host className="relative isolate h-dvh">
+      {/* Enabler for Logo particle effect */}
       <HeroParticlesGL />
       <div className="relative z-10">
         <section className="relative isolate overflow-hidden py-18 sm:py-24 lg:py-30">
           <div
             aria-hidden="true"
-            className="pearl-grid pointer-events-none absolute inset-x-0 top-0 -z-10 h-148 opacity-30"
-          />
+            className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-148 opacity-30"
+          >
+            <GlyphMatrix
+              glyphs="01·•+*/\<>="
+              cellSize={25}
+              mutationRate={0.02}
+              interval={95}
+              fadeBottom={0.6}
+              color="oklch(0.55 0.245 292)"
+            />
+          </div>
           <div
             aria-hidden="true"
             className="bg-primary/10 pointer-events-none absolute top-8 left-[6%] -z-10 size-80 rounded-full blur-3xl"

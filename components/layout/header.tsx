@@ -22,7 +22,7 @@ export function Header({ className }: HeaderProps) {
     <header
       data-slot="header"
       className={cn(
-        'sticky top-0 z-50 pt-2',
+        'fixed top-0 right-0 left-0 z-50 pt-2',
         'flex flex-col items-center justify-center',
         'before:pointer-events-none before:absolute before:inset-x-0 before:top-0 before:h-px',
         'before:via-foreground/6 before:bg-linear-to-r before:from-transparent before:to-transparent',
