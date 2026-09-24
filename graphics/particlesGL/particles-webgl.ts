@@ -172,6 +172,20 @@ export function resolveInteractionTarget(
   return target.closest(selector) ?? document.querySelector(selector) ?? target
 }
 
+/**
+ * This function works as a universal entry point for creating a particle field on a
+ * given target element.It manages the lifecycle of the particle system,
+ * including initialization, rendering, and cleanup.
+ * The function takes in a target element and options for configuring the
+ * particle field, and returns an instance handle that allows for
+ * further interaction with the particle system.
+ *
+ * Creates a new ParticlesGL instance.
+ * @param target The target element for the particle field.
+ * @param options The options for the particle field.
+ * @returns A new ParticlesGL instance.
+ */
+
 const particlesGL = (function () {
   'use strict'
 

@@ -1,6 +1,7 @@
 import { Analytics } from '@vercel/analytics/next'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { Fraunces, Geist_Mono, Inter } from 'next/font/google'
+import Link from 'next/link'
 import { ThemeProvider } from 'next-themes'
 
 import { Footer } from '@/components/layout/footer'
@@ -80,12 +81,12 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
     >
       <body className="flex min-h-full flex-col">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem enableColorScheme>
-          <a
+          <Link
             href="#main-content"
             className="bg-background text-foreground focus:ring-ring sr-only z-100 rounded-md px-4 py-2 focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:ring-2"
           >
             Skip to content
-          </a>
+          </Link>
           <SurfaceIllumination />
           <Header />
           <main id="main-content" className="relative z-10 flex-1">
