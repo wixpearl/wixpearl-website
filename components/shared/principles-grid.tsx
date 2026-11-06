@@ -12,9 +12,11 @@ export function PrinciplesGrid({ items, variant }: PrinciplesGridProps) {
     <Grid columns={4} gap={variant === 'numbered' ? 'xl' : 'lg'}>
       {items.map((principle, index) =>
         variant === 'numbered' ? (
-          <div key={principle.title} className="border-border/75 border-t pt-6">
+          <div key={principle.title} className="border-border border-t pt-6">
             <span className="text-primary font-mono text-xs">0{index + 1}</span>
-            <h3 className="font-display mt-4 text-xl font-semibold">{principle.title}</h3>
+            <h3 className="font-display text-heading mt-4 text-xl font-semibold">
+              {principle.title}
+            </h3>
             <p className="text-muted-foreground mt-3 leading-7">{principle.description}</p>
           </div>
         ) : (
@@ -24,7 +26,7 @@ export function PrinciplesGrid({ items, variant }: PrinciplesGridProps) {
             className="pearl-surface interactive-surface rounded-2xl p-6"
           >
             <span aria-hidden="true" className="ambient-orb mb-5 block size-3 rounded-full" />
-            <h2 className="text-2xl font-semibold">{principle.title}</h2>
+            <h2 className="text-heading text-2xl font-semibold">{principle.title}</h2>
             <p className="text-muted-foreground mt-3 leading-7">{principle.description}</p>
           </div>
         )

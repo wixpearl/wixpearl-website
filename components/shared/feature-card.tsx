@@ -19,7 +19,7 @@ export function FeatureCard({ title, description, icon: Icon }: FeatureCardProps
       </div>
 
       <Stack gap="sm">
-        <h3 className="font-display text-xl font-semibold">{title}</h3>
+        <h3 className="font-display text-heading text-xl font-semibold">{title}</h3>
 
         <p className="text-muted-foreground leading-7">{description}</p>
       </Stack>

@@ -43,21 +43,38 @@ export function GlyphMatrix({
   // animation. Defaults to #6B7280.
   const rgbaRef = useRef({ r: 107, g: 114, b: 128, a: 1 })
 
-  // Resolve the CSS color string to RGBA (handles hex, rgb, hsl, oklch, ...).
+  // Resolve the CSS color string to RGBA (handles hex, rgb, hsl, CSS vars...).
   useEffect(() => {
-    const probe = document.createElement('canvas')
-    probe.width = 1
-    probe.height = 1
-    const probeCtx = probe.getContext('2d')
-    if (!probeCtx) return
-    // Seed with the default so an invalid color falls back to it: the 2d
-    // context keeps the previous fillStyle when assigned an invalid value
-    // instead of silently turning black.
-    probeCtx.fillStyle = '#6B7280'
-    probeCtx.fillStyle = color
-    probeCtx.fillRect(0, 0, 1, 1)
-    const [r = 107, g = 114, b = 128, a = 255] = probeCtx.getImageData(0, 0, 1, 1).data
-    rgbaRef.current = { r, g, b, a: a / 255 }
+    const resolve = () => {
+      const probe = document.createElement('canvas')
+      probe.width = 1
+      probe.height = 1
+      const probeCtx = probe.getContext('2d')
+      if (!probeCtx) return
+      probeCtx.fillStyle = '#6B7280'
+      let resolvedColor = color
+      if (color.startsWith('var(')) {
+        const varName = color.slice(4, -1).trim()
+        resolvedColor =
+          getComputedStyle(document.documentElement).getPropertyValue(varName).trim() || '#0B2447'
+      }
+      probeCtx.fillStyle = resolvedColor
+      probeCtx.fillRect(0, 0, 1, 1)
+      const [r = 107, g = 114, b = 128, a = 255] = probeCtx.getImageData(0, 0, 1, 1).data
+      rgbaRef.current = { r, g, b, a: a / 255 }
+    }
+
+    resolve()
+
+    const observer = new MutationObserver(resolve)
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class'],
+    })
+
+    return () => {
+      observer.disconnect()
+    }
   }, [color])
 
   useEffect(() => {

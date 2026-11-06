@@ -36,7 +36,7 @@ export function Header({ className }: HeaderProps) {
         chromaticAberration={3}
         saturationAmount={110}
         className="rounded-xl"
-        tintClassName="bg-[oklch(0.125_0.032_267)]/10 border border-[oklch(0.125_0.032_267)]/10 dark:border-white/5 dark:bg-white/5"
+        tintClassName="bg-card/75 border border-border shadow-sm dark:border-border dark:bg-card/75"
       >
         <Container>
           <div
@@ -62,7 +62,7 @@ export function Header({ className }: HeaderProps) {
               <ThemeToggle />
 
               {/* Divider for visual rhythm */}
-              <span aria-hidden="true" className="bg-border/70 mx-1 h-5 w-px" />
+              <span aria-hidden="true" className="bg-border mx-1 h-5 w-px" />
 
               <Link
                 href="/contact"
@@ -71,12 +71,11 @@ export function Header({ className }: HeaderProps) {
                   size: 'default',
                   className: cn(
                     // Elevated primary action with layered shadow
-                    'group relative overflow-hidden',
-                    'shadow-primary/20 shadow-lg',
+                    'group relative overflow-hidden shadow-sm',
                     // Smooth hover lift
                     'transition-all duration-300 ease-out',
-                    'hover:shadow-primary/[0.14] hover:-translate-y-px hover:shadow-xl',
-                    'active:translate-y-0 active:shadow-md',
+                    'hover:-translate-y-px hover:shadow-md',
+                    'active:translate-y-0 active:shadow-sm',
                     // Focus ring for accessibility
                     'focus-visible:ring-ring focus-visible:ring-offset-background focus-visible:ring-2 focus-visible:ring-offset-2'
                   ),

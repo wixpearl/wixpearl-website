@@ -39,13 +39,13 @@ export function ServiceCard({
         className={cn(
           // Container — generous breathing space
           'relative flex h-full flex-col overflow-hidden rounded-2xl',
-          'border-border/70 bg-card border',
+          'border-border bg-card border',
           'p-6 sm:p-7',
           // Depth — subtle at rest, warmer on hover
-          'shadow-[0_1px_2px_0_color-mix(in_oklch,var(--ink)_4%,transparent)]',
+          'shadow-sm',
           'transition-all duration-400 ease-out',
-          'hover:border-primary/25 hover:-translate-y-1',
-          'hover:shadow-[0_24px_48px_-24px_color-mix(in_oklch,var(--primary)_25%,transparent),0_8px_16px_-8px_color-mix(in_oklch,var(--ink)_8%,transparent)]',
+          'hover:border-primary/40 hover:-translate-y-1',
+          'hover:shadow-md',
           // Focus ring for keyboard users
           'group-focus-visible/card:ring-ring group-focus-visible/card:ring-offset-background group-focus-visible/card:ring-2 group-focus-visible/card:ring-offset-2'
         )}
@@ -55,7 +55,7 @@ export function ServiceCard({
           aria-hidden="true"
           className={cn(
             'pointer-events-none absolute inset-x-6 top-0 h-px',
-            'via-primary/60 bg-linear-to-r from-transparent to-transparent',
+            'via-primary/50 bg-linear-to-r from-transparent to-transparent',
             'opacity-0 transition-opacity duration-400',
             'group-hover/card:opacity-100'
           )}
@@ -76,10 +76,10 @@ export function ServiceCard({
         <div
           className={cn(
             'relative mb-6 inline-flex size-12 shrink-0 items-center justify-center rounded-xl',
-            'border-primary/12 bg-primary/8 text-primary border',
+            'border-border bg-primary/10 text-primary border',
             'transition-all duration-400 ease-out',
-            'group-hover/card:border-primary/25 group-hover/card:-translate-y-0.5',
-            'group-hover/card:bg-primary/12 group-hover/card:shadow-[0_0_24px_-6px_color-mix(in_oklch,var(--primary)_45%,transparent)]'
+            'group-hover/card:border-primary/40 group-hover/card:-translate-y-0.5',
+            'group-hover/card:bg-primary/20'
           )}
         >
           <Icon
@@ -89,7 +89,7 @@ export function ServiceCard({
         </div>
 
         {/* ─── Title ────────────────────────────────────────── */}
-        <Heading className="font-display text-foreground text-xl font-semibold tracking-[-0.01em]">
+        <Heading className="font-display text-heading text-xl font-semibold tracking-[-0.01em]">
           {titleVariant === 'short' ? service.shortTitle : service.title}
         </Heading>
 

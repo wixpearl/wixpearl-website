@@ -27,8 +27,8 @@ export function Navigation({ className }: NavigationProps) {
             href={item.href}
             className={cn(
               'text-muted-foreground after:bg-primary relative py-2 text-sm font-medium transition-colors after:absolute after:inset-x-0 after:bottom-0 after:mx-auto after:h-0.5 after:w-0 after:rounded-full after:transition-[width] hover:after:w-full',
-              'hover:text-foreground focus-visible:ring-ring focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none',
-              isActive && 'text-foreground after:w-full'
+              'hover:text-heading focus-visible:ring-ring focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none',
+              isActive && 'text-heading font-semibold after:w-full'
             )}
             aria-current={isActive ? 'page' : undefined}
           >

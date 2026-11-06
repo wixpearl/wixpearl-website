@@ -18,7 +18,9 @@ export function StatusPanel({ eyebrow, title, description, action }: StatusPanel
           className="bg-primary/15 absolute -top-24 size-64 rounded-full blur-3xl"
         />
         <p className="text-primary font-mono text-sm font-semibold">{eyebrow}</p>
-        <h1 className="relative mt-5 text-4xl font-semibold tracking-tight">{title}</h1>
+        <h1 className="text-heading relative mt-5 text-4xl font-semibold tracking-tight">
+          {title}
+        </h1>
         <p className="text-muted-foreground mt-4 max-w-lg leading-7">{description}</p>
         <div className="mt-8">{action}</div>
       </div>

@@ -65,7 +65,7 @@ function EmptyState() {
           // Generous breathing space
           'px-8 py-14 text-center sm:px-12 sm:py-16 lg:px-16 lg:py-20',
           // Layered depth
-          'shadow-[0_1px_0_0_color-mix(in_oklch,var(--border)_60%,transparent)_inset,0_30px_80px_-50px_color-mix(in_oklch,var(--ink)_25%,transparent)]'
+          'shadow-sm'
         )}
       >
         {/* Top rim highlight — signature hairline */}
@@ -83,7 +83,7 @@ function EmptyState() {
         {/* Secondary complementary glow */}
         <div
           aria-hidden="true"
-          className="absolute right-1/4 -bottom-28 -z-10 size-64 rounded-full bg-[oklch(0.7_0.15_290/0.06)] blur-[100px]"
+          className="absolute right-1/4 -bottom-28 -z-10 size-64 rounded-full bg-[#6DAAF7]/6 blur-[100px]"
         />
 
         {/* Radial-masked grid */}
@@ -99,8 +99,7 @@ function EmptyState() {
         <div
           className={cn(
             'relative mx-auto mb-8 grid size-14 place-items-center rounded-2xl',
-            'border-primary/15 bg-primary/6 text-primary border',
-            'shadow-[0_0_40px_-12px_color-mix(in_oklch,var(--primary)_40%,transparent)]'
+            'border-border bg-primary/10 text-primary border shadow-sm'
           )}
         >
           <BookOpen className="size-6" aria-hidden="true" />
@@ -114,8 +113,7 @@ function EmptyState() {
         {/* Heading */}
         <h2
           className={cn(
-            'font-display relative mt-5 text-3xl font-semibold tracking-[-0.02em] text-balance sm:text-4xl',
-            'text-foreground'
+            'font-display text-heading relative mt-5 text-3xl font-semibold tracking-[-0.02em] text-balance sm:text-4xl'
           )}
         >
           Approved stories are being prepared

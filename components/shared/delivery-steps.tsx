@@ -12,12 +12,12 @@ export function DeliverySteps({ items, variant }: DeliveryStepsProps) {
     return (
       <ol className="grid gap-x-8 gap-y-0 sm:grid-cols-2">
         {items.map((step) => (
-          <li key={step.number} className="border-border/80 relative border-t py-7 sm:py-8">
+          <li key={step.number} className="border-border relative border-t py-7 sm:py-8">
             <div className="flex items-baseline gap-4">
               <span className="text-primary font-mono text-xs font-semibold tracking-[0.12em]">
                 {step.number}
               </span>
-              <h3 className="font-display text-2xl font-semibold">{step.title}</h3>
+              <h3 className="font-display text-heading text-2xl font-semibold">{step.title}</h3>
             </div>
             <p className="text-muted-foreground mt-3 max-w-md leading-7">{step.description}</p>
           </li>
@@ -44,17 +44,17 @@ export function DeliverySteps({ items, variant }: DeliveryStepsProps) {
               className={cn(
                 'pearl-surface relative flex h-full flex-col overflow-hidden rounded-2xl',
                 'p-6 sm:p-7',
-                'shadow-[0_1px_0_0_color-mix(in_oklch,var(--border)_60%,transparent)_inset]',
+                'shadow-sm',
                 'transition-all duration-400 ease-out',
-                'hover:border-primary/25 hover:-translate-y-1',
-                'hover:shadow-[0_1px_0_0_color-mix(in_oklch,var(--border)_60%,transparent)_inset,0_24px_48px_-24px_color-mix(in_oklch,var(--primary)_28%,transparent)]'
+                'hover:border-primary/40 hover:-translate-y-1',
+                'hover:shadow-md'
               )}
             >
               <span
                 aria-hidden="true"
                 className={cn(
                   'pointer-events-none absolute inset-x-6 top-0 h-px',
-                  'via-primary/60 bg-linear-to-r from-transparent to-transparent',
+                  'via-primary/50 bg-linear-to-r from-transparent to-transparent',
                   'opacity-0 transition-opacity duration-400',
                   'group-hover/step:opacity-100'
                 )}
@@ -72,11 +72,10 @@ export function DeliverySteps({ items, variant }: DeliveryStepsProps) {
                 <span
                   className={cn(
                     'grid size-10 shrink-0 place-items-center rounded-xl',
-                    'border-primary/15 bg-primary/6 border',
+                    'border-border bg-primary/10 border',
                     'text-primary font-mono text-sm font-semibold tracking-wider tabular-nums',
                     'transition-all duration-400 ease-out',
-                    'group-hover/step:border-primary/30 group-hover/step:bg-primary/12',
-                    'group-hover/step:shadow-[0_0_20px_-6px_color-mix(in_oklch,var(--primary)_45%,transparent)]'
+                    'group-hover/step:border-primary/40 group-hover/step:bg-primary/20'
                   )}
                 >
                   {step.number}
@@ -91,7 +90,7 @@ export function DeliverySteps({ items, variant }: DeliveryStepsProps) {
                   )}
                 />
               </div>
-              <h3 className="font-display text-foreground relative text-xl font-semibold tracking-[-0.01em]">
+              <h3 className="font-display text-heading relative text-xl font-semibold tracking-[-0.01em]">
                 {step.title}
               </h3>
               <p className="text-muted-foreground relative mt-3 text-[0.9375rem] leading-7 text-pretty">

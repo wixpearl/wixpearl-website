@@ -29,7 +29,7 @@ export function MobileNavigation() {
         aria-label="Open navigation"
         size="icon"
         variant="ghost"
-        className="rounded-full border bg-[oklch(0.125_0.032_267)]/10 shadow-sm hover:bg-white/5 dark:hover:bg-white/5"
+        className="border-border bg-card/80 text-foreground hover:bg-muted rounded-full border shadow-sm"
         onClick={openNavigation}
       >
         <Menu className="size-5" aria-hidden="true" />
@@ -38,7 +38,7 @@ export function MobileNavigation() {
       <dialog
         ref={dialogRef}
         aria-labelledby="mobile-navigation-title"
-        className="text-foreground border-border m-0 ml-auto h-full max-h-none w-[min(90vw,24rem)] max-w-none border-l bg-transparent p-0 backdrop:bg-(--ink)/60 backdrop:backdrop-blur-sm"
+        className="text-foreground border-border m-0 ml-auto h-full max-h-none w-[min(90vw,24rem)] max-w-none border-l bg-transparent p-0 backdrop:bg-[#07182F]/70 backdrop:backdrop-blur-sm"
         onClick={(event) => {
           if (event.target === event.currentTarget) closeNavigation()
         }}

@@ -61,7 +61,7 @@ export function SectionHeading({
         <Heading
           data-particle-text
           className={cn(
-            'font-display leading-[1.08] font-semibold tracking-[-0.03em] text-balance',
+            'font-display text-heading leading-[1.08] font-semibold tracking-[-0.03em] text-balance',
             titleSizes[size]
           )}
         >

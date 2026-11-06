@@ -30,7 +30,7 @@ export function EngineeringProofSection() {
           className={cn(
             'surface-dark relative isolate overflow-hidden rounded-[2rem]',
             'px-8 py-12 sm:px-12 sm:py-16 lg:px-16 lg:py-20',
-            'shadow-[0_2px_0_0_color-mix(in_oklch,white_6%,transparent)_inset,0_40px_120px_-60px_color-mix(in_oklch,var(--primary)_45%,transparent)]'
+            'shadow-[0_2px_0_0_rgba(255,255,255,0.06)_inset,0_40px_120px_-60px_rgba(7,24,47,0.7)]'
           )}
         >
           <div
@@ -40,11 +40,11 @@ export function EngineeringProofSection() {
           />
           <div
             aria-hidden="true"
-            className="absolute -top-32 -right-24 -z-10 size-96 rounded-full bg-[oklch(0.6_0.22_265/0.18)] blur-[120px]"
+            className="absolute -top-32 -right-24 -z-10 size-96 rounded-full bg-[#6DAAF7]/12 blur-[120px]"
           />
           <div
             aria-hidden="true"
-            className="absolute -bottom-32 -left-24 -z-10 size-80 rounded-full bg-[oklch(0.6_0.2_290/0.12)] blur-[110px]"
+            className="absolute -bottom-32 -left-24 -z-10 size-80 rounded-full bg-[#0B2447]/35 blur-[110px]"
           />
           <div
             aria-hidden="true"
@@ -56,12 +56,12 @@ export function EngineeringProofSection() {
               title="Care you can see in every decision"
               description="Strong systems come from disciplined choices, visible trade-offs, and an accountable engineering relationship."
               className={cn(
-                '**:data-[slot=eyebrow]:text-violet-300',
-                '[&_p]:text-white/65',
+                '**:data-[slot=eyebrow]:text-[#6DAAF7]',
+                '[&_p]:text-[#D7DFE9]',
                 '[&_h2]:tracking-[-0.02em] [&_h2]:text-white'
               )}
             />
-            <ul className="divide-y divide-white/8 border-y border-white/8">
+            <ul className="divide-y divide-[#29425C] border-y border-[#29425C]">
               {engineeringProof.map((item) => (
                 <li
                   key={item.title}
@@ -74,26 +74,26 @@ export function EngineeringProofSection() {
                     aria-hidden="true"
                     className={cn(
                       'absolute top-1/2 left-0 h-0 w-px -translate-y-1/2',
-                      'bg-linear-to-b from-transparent via-violet-300/60 to-transparent',
+                      'bg-linear-to-b from-transparent via-[#6DAAF7]/60 to-transparent',
                       'transition-all duration-500 group-hover/item:h-3/4'
                     )}
                   />
                   <span
                     className={cn(
                       'mt-0.5 grid size-8 shrink-0 place-items-center rounded-full',
-                      'border border-violet-300/20 bg-linear-to-br from-violet-300/15 to-violet-300/2 text-violet-200',
+                      'border border-[#6DAAF7]/30 bg-linear-to-br from-[#6DAAF7]/15 to-[#6DAAF7]/2 text-[#6DAAF7]',
                       'transition-all duration-400 ease-out group-hover/item:scale-105',
-                      'group-hover/item:border-violet-300/35 group-hover/item:bg-violet-300/12',
-                      'group-hover/item:shadow-[0_0_20px_-4px_oklch(0.75_0.18_290/0.5)]'
+                      'group-hover/item:border-[#6DAAF7]/50 group-hover/item:bg-[#6DAAF7]/20',
+                      'group-hover/item:shadow-[0_0_20px_-4px_rgba(109,170,247,0.4)]'
                     )}
                   >
                     <Check className="size-4" aria-hidden="true" />
                   </span>
                   <div className="min-w-0">
-                    <h3 className="font-display text-xl font-semibold tracking-[-0.01em] text-white/95">
+                    <h3 className="font-display text-xl font-semibold tracking-[-0.01em] text-white">
                       {item.title}
                     </h3>
-                    <p className="mt-2 text-[0.9375rem] leading-7 text-pretty text-white/60">
+                    <p className="mt-2 text-[0.9375rem] leading-7 text-pretty text-[#9EADBE]">
                       {item.description}
                     </p>
                   </div>

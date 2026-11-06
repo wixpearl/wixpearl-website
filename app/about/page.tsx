@@ -27,7 +27,7 @@ export default function AboutPage() {
         <Container>
           <div className="grid gap-10 lg:grid-cols-2 lg:gap-20">
             <div>
-              <h2 className="text-3xl font-semibold tracking-tight">Why we exist</h2>
+              <h2 className="text-heading text-3xl font-semibold tracking-tight">Why we exist</h2>
             </div>
             <div className="text-muted-foreground space-y-5 text-lg leading-8">
               <p>
@@ -46,7 +46,7 @@ export default function AboutPage() {
           </div>
         </Container>
       </Section>
-      <Section className="bg-card/55 border-y">
+      <Section className="surface-subtle border-y">
         <Container>
           <PrinciplesGrid items={principles} variant="cards" />
         </Container>

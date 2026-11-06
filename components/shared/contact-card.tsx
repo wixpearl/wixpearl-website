@@ -18,9 +18,9 @@ export function ContactCard({ title, value, description, href, icon: Icon }: Con
       </div>
 
       <Stack gap="xs">
-        <h3 className="font-semibold">{title}</h3>
+        <h3 className="text-heading font-semibold">{title}</h3>
 
-        <p className="font-medium">{value}</p>
+        <p className="text-foreground font-medium">{value}</p>
 
         {description ? (
           <p className="text-muted-foreground text-sm leading-6">{description}</p>

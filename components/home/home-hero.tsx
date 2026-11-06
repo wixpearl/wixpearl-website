@@ -27,7 +27,7 @@ export function HomeHero() {
               mutationRate={0.02}
               interval={95}
               fadeBottom={0.6}
-              color="oklch(0.55 0.245 292)"
+              color="var(--glyph)"
             />
           </div>
           <div
@@ -57,8 +57,9 @@ export function HomeHero() {
                   <Link
                     href="/contact"
                     className={buttonVariants({
+                      variant: 'cta',
                       size: 'lg',
-                      className: 'shadow-primary/20 shadow-lg',
+                      className: 'shadow-md hover:shadow-lg',
                     })}
                   >
                     Discuss your project <ArrowRight data-icon="inline-end" />
@@ -72,7 +73,7 @@ export function HomeHero() {
                 </div>
                 <p className="text-muted-foreground flex items-center gap-2.5 text-sm">
                   <span
-                    className="bg-success size-2 rounded-full shadow-[0_0_0_4px_color-mix(in_oklch,var(--success)_13%,transparent)]"
+                    className="bg-success size-2 rounded-full shadow-[0_0_0_4px_rgba(22,163,106,0.18)]"
                     aria-hidden="true"
                   />
                   Based in Sri Lanka · Working locally and internationally

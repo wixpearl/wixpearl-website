@@ -44,8 +44,8 @@ export function CTA({
             isLuminous ? 'surface-dark' : 'pearl-surface text-foreground',
             // Cinematic depth
             isLuminous
-              ? 'shadow-[0_2px_0_0_color-mix(in_oklch,white_6%,transparent)_inset,0_60px_140px_-60px_color-mix(in_oklch,var(--primary)_50%,transparent)]'
-              : 'shadow-[0_1px_0_0_color-mix(in_oklch,var(--border)_60%,transparent)_inset,0_40px_100px_-50px_color-mix(in_oklch,var(--primary)_25%,transparent)]'
+              ? 'shadow-[0_2px_0_0_rgba(255,255,255,0.08)_inset,0_40px_100px_-50px_rgba(7,24,47,0.7)]'
+              : 'shadow-[0_1px_0_0_rgba(228,233,240,0.8)_inset,0_30px_70px_-40px_rgba(11,36,71,0.1)]'
           )}
         >
           {/* ─── Atmospheric layers (luminous only) ─────────── */}
@@ -63,13 +63,13 @@ export function CTA({
               {/* Primary glow — top right, dominant light */}
               <div
                 aria-hidden="true"
-                className="absolute -top-40 -right-24 -z-10 size-96 rounded-full bg-[oklch(0.6_0.22_265/0.28)] blur-[120px]"
+                className="absolute -top-40 -right-24 -z-10 size-96 rounded-full bg-[#6DAAF7]/14 blur-[120px]"
               />
 
               {/* Secondary glow — bottom left, complementary */}
               <div
                 aria-hidden="true"
-                className="absolute -bottom-32 -left-24 -z-10 size-80 rounded-full bg-[oklch(0.6_0.2_290/0.15)] blur-[110px]"
+                className="absolute -bottom-32 -left-24 -z-10 size-80 rounded-full bg-[#0B2447]/35 blur-[110px]"
               />
 
               {/* Top rim light — signature hairline */}
@@ -117,7 +117,7 @@ export function CTA({
                 <p
                   className={cn(
                     'text-base leading-7 text-pretty sm:text-lg sm:leading-8',
-                    isLuminous ? 'text-white/65' : 'text-muted-foreground'
+                    isLuminous ? 'text-[#D7DFE9]' : 'text-muted-foreground'
                   )}
                 >
                   {description}
@@ -131,20 +131,10 @@ export function CTA({
                 data-particle-cta
                 href={primaryHref}
                 className={cn(
-                  buttonVariants({ size: 'lg' }),
+                  buttonVariants({ variant: 'cta', size: 'lg' }),
                   'group/primary relative overflow-hidden',
                   'transition-all duration-400 ease-out',
-                  isLuminous
-                    ? cn(
-                        'shadow-primary/25 shadow-lg',
-                        'hover:-translate-y-px',
-                        'hover:shadow-primary/35 hover:shadow-xl'
-                      )
-                    : cn(
-                        'shadow-primary/15 shadow-md',
-                        'hover:-translate-y-px',
-                        'hover:shadow-primary/25 hover:shadow-lg'
-                      )
+                  'shadow-lg hover:-translate-y-px hover:shadow-xl'
                 )}
               >
                 {/* Shimmer sweep on hover */}

@@ -14,9 +14,9 @@ export function GlobalDeliverySection() {
           className={cn(
             'pearl-surface group/globe relative isolate overflow-hidden rounded-[2.5rem]',
             'px-8 py-12 sm:px-12 sm:py-14 lg:px-16 lg:py-16',
-            'shadow-[0_1px_0_0_color-mix(in_oklch,var(--border)_60%,transparent)_inset,0_30px_80px_-50px_color-mix(in_oklch,var(--ink)_25%,transparent)]',
+            'shadow-[0_1px_0_0_rgba(228,233,240,0.8)_inset,0_30px_80px_-50px_rgba(11,36,71,0.1)]',
             'transition-shadow duration-500 ease-out',
-            'hover:shadow-[0_1px_0_0_color-mix(in_oklch,var(--border)_60%,transparent)_inset,0_40px_100px_-50px_color-mix(in_oklch,var(--primary)_25%,transparent)]'
+            'hover:shadow-[0_1px_0_0_rgba(228,233,240,0.8)_inset,0_40px_100px_-50px_rgba(11,36,71,0.18)]'
           )}
         >
           <div
@@ -29,7 +29,7 @@ export function GlobalDeliverySection() {
           />
           <div
             aria-hidden="true"
-            className="absolute -top-24 -left-20 -z-10 size-72 rounded-full bg-[oklch(0.7_0.15_200/0.08)] blur-[100px]"
+            className="absolute -top-24 -left-20 -z-10 size-72 rounded-full bg-[#6DAAF7]/8 blur-[100px]"
           />
           <div
             aria-hidden="true"

@@ -64,11 +64,13 @@ export default async function ServicePage({ params }: ServicePageProps) {
           </Link>
         }
       />
-      <Section className="bg-card/55 border-y">
+      <Section className="surface-subtle border-y">
         <Container>
           <Grid columns={2} gap="xl">
             <div>
-              <h2 className="text-3xl font-semibold tracking-tight">What we can build</h2>
+              <h2 className="text-heading text-3xl font-semibold tracking-tight">
+                What we can build
+              </h2>
               <p className="text-muted-foreground mt-4 max-w-xl leading-7">
                 The exact scope is shaped during discovery, but these are common areas where this
                 capability creates value.
@@ -84,7 +86,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
                     className="text-primary mt-0.5 size-5 shrink-0"
                     aria-hidden="true"
                   />
-                  <span className="font-medium">{capability}</span>
+                  <span className="text-heading font-medium">{capability}</span>
                 </div>
               ))}
             </div>
@@ -94,7 +96,9 @@ export default async function ServicePage({ params }: ServicePageProps) {
       <Section>
         <Container>
           <div className="mx-auto max-w-4xl">
-            <h2 className="text-3xl font-semibold tracking-tight">Designed for useful outcomes</h2>
+            <h2 className="text-heading text-3xl font-semibold tracking-tight">
+              Designed for useful outcomes
+            </h2>
             <div className="mt-8 grid gap-5 sm:grid-cols-3">
               {service.outcomes.map((outcome) => (
                 <div key={outcome} className="pearl-surface interactive-surface rounded-2xl p-6">

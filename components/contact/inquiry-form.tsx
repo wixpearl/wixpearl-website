@@ -67,7 +67,7 @@ export function InquiryForm() {
       className={cn(
         'pearl-surface group/form relative isolate overflow-hidden rounded-[2rem]',
         'p-7 sm:p-10 lg:p-12',
-        'shadow-[0_1px_0_0_color-mix(in_oklch,var(--border)_60%,transparent)_inset,0_40px_100px_-50px_color-mix(in_oklch,var(--ink)_25%,transparent)]'
+        'shadow-sm'
       )}
     >
       <div
@@ -80,7 +80,7 @@ export function InquiryForm() {
       />
       <div
         aria-hidden="true"
-        className="absolute -bottom-32 -left-24 -z-10 size-72 rounded-full bg-[oklch(0.7_0.15_290/0.06)] blur-[100px]"
+        className="absolute -bottom-32 -left-24 -z-10 size-72 rounded-full bg-[#6DAAF7]/6 blur-[100px]"
       />
 
       <input type="hidden" name="startedAt" value={startedAt} />

@@ -15,8 +15,8 @@ export function TestimonialCard({ quote, name, role, company }: TestimonialCardP
           <p className="text-lg leading-8">“{quote}”</p>
         </blockquote>
 
-        <footer className="mt-8 border-t pt-5">
-          <p className="font-semibold">{name}</p>
+        <footer className="border-border mt-8 border-t pt-5">
+          <p className="text-heading font-semibold">{name}</p>
 
           {role || company ? (
             <p className="text-muted-foreground mt-1 text-sm">

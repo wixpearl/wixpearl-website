@@ -28,15 +28,15 @@ export function Footer() {
           <FooterColumn title="Company" links={siteConfig.footer.company} />
         </div>
 
-        <div className="text-muted-foreground flex flex-col gap-4 border-t py-6 text-sm sm:flex-row sm:items-center sm:justify-between">
+        <div className="text-muted-foreground border-border flex flex-col gap-4 border-t py-6 text-sm sm:flex-row sm:items-center sm:justify-between">
           <p>© {year} WixPearl. All rights reserved.</p>
 
           <div className="flex flex-wrap gap-x-5 gap-y-2">
-            <Link href="/privacy" className="hover:text-foreground transition-colors">
+            <Link href="/privacy" className="hover:text-heading transition-colors">
               Privacy
             </Link>
 
-            <Link href="/terms" className="hover:text-foreground transition-colors">
+            <Link href="/terms" className="hover:text-heading transition-colors">
               Terms
             </Link>
           </div>
@@ -58,14 +58,14 @@ interface FooterColumnProps {
 function FooterColumn({ title, links }: FooterColumnProps) {
   return (
     <div>
-      <h2 className="text-sm font-semibold">{title}</h2>
+      <h2 className="text-heading text-sm font-semibold">{title}</h2>
 
       <ul className="mt-5 space-y-3">
         {links.map((link) => (
           <li key={link.href}>
             <Link
               href={link.href}
-              className="text-muted-foreground hover:text-foreground text-sm transition-colors"
+              className="text-muted-foreground hover:text-heading text-sm transition-colors"
             >
               {link.label}
             </Link>

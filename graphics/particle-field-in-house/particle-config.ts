@@ -2,11 +2,11 @@ import type { ParticleFieldConfig } from './types'
 
 export const particleFieldConfig: ParticleFieldConfig = {
   colors: {
-    navy: '#0B1F33',
-    blue: '#168CFF',
-    aqua: '#23D5C3',
-    pearl: '#F7F8F5',
-    slate: '#66788A',
+    navy: '#0B2447',
+    blue: '#6DAAF7',
+    aqua: '#145DA0',
+    pearl: '#FFFFFF',
+    slate: '#344054',
   },
   clusters: [
     {

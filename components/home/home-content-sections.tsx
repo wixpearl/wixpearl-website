@@ -91,10 +91,10 @@ export function TechnologySection() {
               className={cn(
                 'pearl-surface relative flex h-full flex-col overflow-hidden rounded-2xl',
                 'p-6 sm:p-7',
-                'shadow-[0_1px_0_0_color-mix(in_oklch,var(--border)_60%,transparent)_inset]',
+                'shadow-sm',
                 'transition-all duration-400 ease-out',
-                'hover:border-primary/25 hover:-translate-y-1',
-                'hover:shadow-[0_1px_0_0_color-mix(in_oklch,var(--border)_60%,transparent)_inset,0_24px_48px_-24px_color-mix(in_oklch,var(--primary)_28%,transparent)]'
+                'hover:border-primary/40 hover:-translate-y-1',
+                'hover:shadow-md'
               )}
             >
               <span

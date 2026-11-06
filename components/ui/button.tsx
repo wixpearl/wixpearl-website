@@ -8,16 +8,17 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          'bg-[linear-gradient(120deg,var(--primary),color-mix(in_oklch,var(--primary)_82%,var(--cyan)))] text-primary-foreground shadow-[0_10px_28px_-15px_color-mix(in_oklch,var(--primary)_70%,transparent)] hover:-translate-y-0.5 hover:brightness-105 hover:shadow-[0_14px_34px_-16px_color-mix(in_oklch,var(--primary)_82%,transparent)]',
+          'bg-primary text-primary-foreground shadow-sm hover:bg-[var(--primary-hover)] hover:-translate-y-0.5 hover:shadow-md active:translate-y-0 focus-visible:ring-primary',
+        cta: 'bg-[var(--cta)] text-[var(--cta-foreground)] shadow-sm hover:bg-[var(--cta-hover)] hover:-translate-y-0.5 hover:shadow-md active:translate-y-0 focus-visible:ring-[var(--cta)]',
         outline:
-          'border-border bg-card/72 shadow-sm backdrop-blur-md hover:-translate-y-0.5 hover:border-primary/38 hover:bg-primary/6 hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:border-input dark:bg-card/50 dark:hover:bg-input/40',
+          'border border-border bg-card/80 text-foreground shadow-sm backdrop-blur-md hover:-translate-y-0.5 hover:border-primary/50 hover:bg-muted hover:text-heading aria-expanded:bg-muted aria-expanded:text-heading dark:border-border dark:bg-card/60 dark:hover:bg-[var(--color-elevated)] dark:hover:border-white/50 dark:hover:text-white',
         secondary:
-          'bg-secondary text-secondary-foreground hover:bg-[color-mix(in_oklch,var(--secondary),var(--foreground)_5%)] aria-expanded:bg-secondary aria-expanded:text-secondary-foreground',
+          'bg-secondary text-secondary-foreground border border-border hover:bg-[var(--border)] aria-expanded:bg-secondary aria-expanded:text-secondary-foreground dark:bg-transparent dark:text-white dark:border-white/40 dark:hover:bg-white/10 dark:hover:border-white dark:hover:text-white',
         ghost:
-          'hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:hover:bg-muted/50',
+          'hover:bg-muted hover:text-heading aria-expanded:bg-muted aria-expanded:text-heading dark:hover:bg-[var(--color-elevated)] dark:hover:text-white',
         destructive:
-          'bg-destructive/10 text-destructive hover:bg-destructive/20 focus-visible:border-destructive/40 focus-visible:ring-destructive/20 dark:bg-destructive/20 dark:hover:bg-destructive/30 dark:focus-visible:ring-destructive/40',
-        link: 'text-primary underline-offset-4 hover:underline',
+          'bg-destructive text-destructive-foreground hover:bg-[var(--cta-hover)] focus-visible:ring-destructive',
+        link: 'text-[var(--link)] underline-offset-4 hover:underline hover:opacity-85',
       },
       size: {
         default:

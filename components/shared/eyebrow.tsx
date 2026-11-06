@@ -4,6 +4,7 @@ import type { ComponentProps } from 'react'
 
 const tones = {
   primary: 'text-primary',
+  accent: 'text-accent',
   muted: 'text-muted-foreground',
   foreground: 'text-foreground',
 } as const
