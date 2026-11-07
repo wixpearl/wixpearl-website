@@ -58,14 +58,14 @@ export function HomeDeliverySection() {
   return (
     <Section>
       <Container>
-        <div className="grid gap-12 lg:grid-cols-[0.72fr_1.28fr] lg:gap-20">
+        <Stack gap="2xl">
           <SectionHeading
             eyebrow="How we work"
             title="A clear path from uncertainty to dependable software"
-            description="The process stays visible, collaborative, and grounded in business value."
+            description="A disciplined, transparent delivery framework that keeps your team in control from discovery through production launch."
           />
-          <DeliverySteps items={deliverySteps} variant="compact" />
-        </div>
+          <DeliverySteps items={deliverySteps} variant="cards" />
+        </Stack>
       </Container>
     </Section>
   )
@@ -75,12 +75,35 @@ export function TechnologySection() {
   return (
     <Section className="surface-subtle border-x-0">
       <Container>
-        <div className="grid items-start gap-14 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
-          <SectionHeading
-            eyebrow="Technical capability"
-            title="Modern technology, chosen with purpose"
-            description="We select tools for the problem, team, and operating environment - not for a trend."
-          />
+        <div className="grid items-start gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
+          <div>
+            <SectionHeading
+              eyebrow="Technical capability"
+              title="Modern technology, chosen with purpose"
+              description="We select tools for the problem, team, and operating environment — not for a trend."
+            />
+            <div className="border-border/80 text-muted-foreground mt-8 space-y-4 border-t pt-6 text-sm">
+              <div className="flex items-center gap-3">
+                <span className="bg-primary/10 text-primary flex size-6 items-center justify-center rounded-full text-xs font-semibold">
+                  ✓
+                </span>
+                <span>Type-safe, maintainable TypeScript & Python architectures</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <span className="bg-primary/10 text-primary flex size-6 items-center justify-center rounded-full text-xs font-semibold">
+                  ✓
+                </span>
+                <span>Automated testing & CI/CD deployment pipelines</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <span className="bg-primary/10 text-primary flex size-6 items-center justify-center rounded-full text-xs font-semibold">
+                  ✓
+                </span>
+                <span>Zero proprietary lock-in — codebases you fully own</span>
+              </div>
+            </div>
+          </div>
+
           <div className="relative">
             <div
               aria-hidden="true"
@@ -90,22 +113,27 @@ export function TechnologySection() {
               data-particle-surface
               className={cn(
                 'pearl-surface relative flex h-full flex-col overflow-hidden rounded-2xl',
-                'p-6 sm:p-7',
-                'shadow-sm',
-                'transition-all duration-400 ease-out',
-                'hover:border-primary/40 hover:-translate-y-1',
-                'hover:shadow-md'
+                'p-6 sm:p-8',
+                'shadow-sm transition-all duration-400 ease-out',
+                'hover:border-primary/40 hover:-translate-y-1 hover:shadow-md',
+                'dark:hover:bg-[var(--surface-raised)]'
               )}
             >
               <span
                 aria-hidden="true"
                 className="via-primary/40 pointer-events-none absolute inset-x-8 top-0 h-px bg-linear-to-r from-transparent to-transparent"
               />
-              <div className="mb-6 flex items-center gap-2.5">
-                <span aria-hidden="true" className="bg-primary/60 size-1.5 rounded-full" />
-                <span className="text-muted-foreground font-mono text-[0.68rem] font-medium tracking-[0.14em] uppercase">
-                  Stack we work with
-                </span>
+              <div className="mb-6 flex items-center justify-between">
+                <div className="flex items-center gap-2.5">
+                  <span
+                    aria-hidden="true"
+                    className="bg-primary size-2 animate-pulse rounded-full"
+                  />
+                  <span className="text-heading font-mono text-[0.72rem] font-semibold tracking-[0.14em] uppercase">
+                    Core Engineering Stack
+                  </span>
+                </div>
+                <span className="text-muted-foreground font-mono text-xs">Production Grade</span>
               </div>
               <div className="flex flex-wrap gap-2.5 sm:gap-3">
                 {technologies.map((technology) => (

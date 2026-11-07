@@ -1,5 +1,6 @@
 'use client'
 
+import { useTheme } from 'next-themes'
 import { useEffect } from 'react'
 
 import { canUseHeroParticles } from './hero-particle-policy'
@@ -31,6 +32,8 @@ function resetHost(host: HTMLElement) {
 }
 
 export function HeroParticlesGL() {
+  const { resolvedTheme } = useTheme()
+
   useEffect(() => {
     const host = document.querySelector<HTMLElement>('[data-particle-host]')
     if (!host) return
@@ -84,7 +87,7 @@ export function HeroParticlesGL() {
       controller?.cleanup()
       resetHost(host)
     }
-  }, [])
+  }, [resolvedTheme])
 
   return null
 }

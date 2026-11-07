@@ -49,10 +49,26 @@ export function GlobalDeliverySection() {
                 Close collaboration wherever your business operates.
               </h2>
             </div>
-            <p className="text-muted-foreground text-[1.0625rem] leading-8 text-pretty sm:text-lg sm:leading-9 lg:self-end">
-              WixPearl brings direct access to engineering, flexible collaboration, and a practical
-              cost structure to businesses in Sri Lanka and around the world.
-            </p>
+            <div>
+              <p className="text-muted-foreground text-[1.0625rem] leading-8 text-pretty sm:text-lg sm:leading-9">
+                WixPearl brings direct access to engineering, flexible collaboration, and a
+                practical cost structure to businesses in Sri Lanka and around the world.
+              </p>
+              <div className="border-border/80 text-muted-foreground mt-8 grid grid-cols-1 gap-3 border-t pt-6 sm:grid-cols-2 sm:gap-4 sm:pt-6">
+                <div className="flex items-center gap-2 text-xs">
+                  <span className="bg-success size-1.5 rounded-full" aria-hidden="true" />
+                  <span>
+                    <strong>Timezone Overlap:</strong> UK, EU, APAC & Americas
+                  </span>
+                </div>
+                <div className="flex items-center gap-2 text-xs">
+                  <span className="bg-success size-1.5 rounded-full" aria-hidden="true" />
+                  <span>
+                    <strong>Direct Comms:</strong> Slack, Teams, or Discord
+                  </span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </Container>

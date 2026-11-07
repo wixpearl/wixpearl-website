@@ -1,7 +1,6 @@
 import { Bot, Braces, Cog, Radio, ShieldCheck } from 'lucide-react'
-import Image from 'next/image'
 
-import pearlLogo from '@/public/brand/logo-mark-transparent.png'
+import { HeroLogo } from './hero-logo'
 
 const capabilities = [
   {
@@ -154,21 +153,8 @@ export function HeroVisual() {
             className="hero-pearl-breathe absolute size-44 rounded-full bg-[#6DAAF7]/15 blur-3xl dark:bg-[#6DAAF7]/12"
           />
           <div className="hero-pearl relative grid size-24 place-items-center rounded-full sm:size-28">
-            <Image
-              aria-hidden="true"
-              alt=""
-              className="hero-pearl-logo-glow absolute w-[88%]"
-              sizes="(min-width: 640px) 5.25rem, 4.5rem"
-              src={pearlLogo}
-            />
-            <Image
-              data-particles-hero-logo
-              data-slot="hero-pearl-logo"
-              alt=""
-              className="hero-pearl-logo relative z-2 w-[88%]"
-              sizes="(min-width: 640px) 5.25rem, 4.5rem"
-              src={pearlLogo}
-            />
+            <HeroLogo glow />
+            <HeroLogo />
             <span aria-hidden="true" className="hero-pearl-sheen absolute inset-0 z-3" />
           </div>
         </div>

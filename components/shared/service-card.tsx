@@ -39,7 +39,7 @@ export function ServiceCard({
         className={cn(
           // Container — generous breathing space
           'relative flex h-full flex-col overflow-hidden rounded-2xl',
-          'border-border bg-card border',
+          'border-border bg-card border dark:hover:bg-[var(--surface-raised)]',
           'p-6 sm:p-7',
           // Depth — subtle at rest, warmer on hover
           'shadow-sm',
@@ -97,6 +97,23 @@ export function ServiceCard({
         <p className="text-muted-foreground mt-3 text-[0.9375rem] leading-7 text-pretty">
           {service.description}
         </p>
+
+        {/* ─── Capabilities tags ───────────────────────────── */}
+        {service.capabilities.length > 0 ? (
+          <div
+            className="mt-5 flex flex-wrap gap-1.5"
+            aria-label={`${service.shortTitle} key capabilities`}
+          >
+            {service.capabilities.slice(0, 3).map((capability) => (
+              <span
+                key={capability}
+                className="border-border/70 bg-muted/80 text-muted-foreground rounded-md border px-2 py-0.5 text-[0.72rem] font-medium dark:border-white/10 dark:bg-white/4"
+              >
+                {capability}
+              </span>
+            ))}
+          </div>
+        ) : null}
 
         {/* ─── Footer CTA — pinned to bottom ────────────────── */}
         <div className="mt-auto pt-6">
