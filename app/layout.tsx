@@ -88,7 +88,7 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
             Skip to content
           </Link>
           <SurfaceIllumination />
-          <Header />
+          <Header className="pt-8" />
           <main id="main-content" className="relative z-10 flex-1">
             {children}
           </main>

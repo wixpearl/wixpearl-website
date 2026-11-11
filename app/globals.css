@@ -100,7 +100,7 @@
   --card-foreground: oklch(0.975 0.01 91);
   --popover: oklch(0.19 0.05 270);
   --popover-foreground: oklch(0.975 0.01 91);
-  --primary: oklch(0.72 0.195 292);
+  --primary: oklch(62.833% 0.21955 291.937);
   --primary-foreground: oklch(0.985 0.01 91);
   --secondary: oklch(0.245 0.055 280);
   --secondary-foreground: oklch(0.975 0.01 91);
@@ -618,6 +618,7 @@
     box-shadow: none;
   }
 }
+
 ::view-transition-old(root),
 ::view-transition-new(root) {
   animation: none;
