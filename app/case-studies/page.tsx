@@ -83,7 +83,7 @@ function EmptyState() {
         {/* Secondary complementary glow */}
         <div
           aria-hidden="true"
-          className="absolute right-1/4 -bottom-28 -z-10 size-64 rounded-full bg-[#6DAAF7]/6 blur-[100px]"
+          className="bg-primary/5 absolute right-1/4 -bottom-28 -z-10 size-64 rounded-full blur-[100px]"
         />
 
         {/* Radial-masked grid */}

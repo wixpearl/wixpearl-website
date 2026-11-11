@@ -4,7 +4,6 @@ import {
   CapabilitiesSection,
   HomeDeliverySection,
   HomeFinalCta,
-  HomePrinciplesSection,
   SelectedWorkSection,
   TechnologySection,
 } from '@/components/home/home-content-sections'
@@ -19,7 +18,6 @@ export default function Home() {
       <SelectedWorkSection />
       <HomeDeliverySection />
       <TechnologySection />
-      <HomePrinciplesSection />
       <GlobalDeliverySection />
       <HomeFinalCta />
     </>

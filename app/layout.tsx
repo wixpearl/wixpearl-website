@@ -1,6 +1,6 @@
 import { Analytics } from '@vercel/analytics/next'
 import { SpeedInsights } from '@vercel/speed-insights/next'
-import { Fraunces, Geist_Mono, Inter } from 'next/font/google'
+import { Geist_Mono, Inter, Plus_Jakarta_Sans } from 'next/font/google'
 import Link from 'next/link'
 import { ThemeProvider } from 'next-themes'
 
@@ -28,9 +28,9 @@ const geistMono = Geist_Mono({
   display: 'swap',
 })
 
-const fraunces = Fraunces({
+const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ['latin'],
-  variable: '--font-fraunces',
+  variable: '--font-plus-jakarta',
   display: 'swap',
 })
 
@@ -67,7 +67,7 @@ export const viewport: Viewport = {
   colorScheme: 'light dark',
   themeColor: [
     { media: '(prefers-color-scheme: light)', color: '#FFFFFF' },
-    { media: '(prefers-color-scheme: dark)', color: '#07182F' },
+    { media: '(prefers-color-scheme: dark)', color: '#141414' },
   ],
 }
 
@@ -77,7 +77,12 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
       lang="en"
       data-scroll-behavior="smooth"
       suppressHydrationWarning
-      className={cn('h-full antialiased', inter.variable, geistMono.variable, fraunces.variable)}
+      className={cn(
+        'h-full antialiased',
+        inter.variable,
+        geistMono.variable,
+        plusJakartaSans.variable
+      )}
     >
       <body className="flex min-h-full flex-col">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem enableColorScheme>
