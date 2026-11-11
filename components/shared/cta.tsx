@@ -5,12 +5,15 @@ import { Cluster } from '@/components/layout/cluster'
 import { Container } from '@/components/layout/container'
 import { Section } from '@/components/layout/section'
 import { Stack } from '@/components/layout/stack'
+import { BorderBeam } from '@/components/ui/border-beam'
 import { buttonVariants } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 
 interface CTAProps {
+  eyebrow?: string
   title: string
   description?: string
+  motto?: string
   primaryLabel?: string
   primaryHref?: string
   secondaryLabel?: string
@@ -20,8 +23,10 @@ interface CTAProps {
 }
 
 export function CTA({
+  eyebrow,
   title,
   description,
+  motto,
   primaryLabel = 'Start a Project',
   primaryHref = '/contact',
   secondaryLabel,
@@ -37,72 +42,64 @@ export function CTA({
         <div
           data-particle-surface
           className={cn(
-            'group/cta relative isolate overflow-hidden rounded-[2.5rem]',
-            // Generous, escalating padding at each breakpoint
+            'relative overflow-hidden rounded-lg',
             'px-8 py-14 sm:px-12 sm:py-16 lg:px-20 lg:py-20',
-            // Surface treatment
-            isLuminous ? 'surface-dark' : 'pearl-surface text-foreground',
-            // Cinematic depth
-            isLuminous
-              ? 'shadow-[0_2px_0_0_rgba(255,255,255,0.08)_inset,0_40px_100px_-50px_rgba(7,24,47,0.7)]'
-              : 'shadow-[0_1px_0_0_rgba(228,233,240,0.8)_inset,0_30px_70px_-40px_rgba(11,36,71,0.1)]'
+            isLuminous ? 'surface-dark' : 'pearl-surface text-foreground'
           )}
         >
-          {/* ─── Atmospheric layers (luminous only) ─────────── */}
           {isLuminous ? (
             <>
-              {/* Radial-masked grid — schematic feel */}
-              <div
-                aria-hidden="true"
-                className="pearl-grid absolute inset-0 -z-10 opacity-[0.08]"
-                style={{
-                  maskImage: 'radial-gradient(ellipse at center, black 30%, transparent 85%)',
-                }}
+              <BorderBeam
+                size={280}
+                duration={8}
+                borderWidth={2}
+                colorFrom="#ED1C24"
+                colorTo="#FF6B6F"
               />
-
-              {/* Primary glow — top right, dominant light */}
-              <div
-                aria-hidden="true"
-                className="absolute -top-40 -right-24 -z-10 size-96 rounded-full bg-[#6DAAF7]/14 blur-[120px]"
+              <BorderBeam
+                size={280}
+                duration={8}
+                delay={4}
+                reverse
+                borderWidth={2}
+                colorFrom="#6DAAF7"
+                colorTo="#ED1C24"
               />
-
-              {/* Secondary glow — bottom left, complementary */}
-              <div
+              <svg
                 aria-hidden="true"
-                className="absolute -bottom-32 -left-24 -z-10 size-80 rounded-full bg-[#0B2447]/35 blur-[110px]"
-              />
-
-              {/* Top rim light — signature hairline */}
-              <div
-                aria-hidden="true"
-                className="absolute inset-x-20 top-0 h-px bg-linear-to-r from-transparent via-white/25 to-transparent"
-              />
-
-              {/* Floating orb — quiet drama */}
-              <div
-                aria-hidden="true"
-                className="ambient-orb absolute top-12 right-[14%] -z-10 hidden size-10 rounded-full opacity-75 lg:block"
-              />
+                className="pointer-events-none absolute right-0 bottom-0 h-full w-105 opacity-90"
+                viewBox="0 0 420 200"
+                fill="none"
+                preserveAspectRatio="none"
+              >
+                <path
+                  d="M 160 200 C 260 175, 340 120, 420 20 L 420 200 Z"
+                  className="fill-[#12396B]/40 dark:fill-white/6"
+                />
+                <path
+                  d="M 250 200 C 325 185, 375 150, 420 95 L 420 200 Z"
+                  fill="#ED1C24"
+                  fillOpacity="0.55"
+                />
+              </svg>
             </>
-          ) : (
-            <>
-              {/* Minimal variant — single ambient highlight */}
-              <div
-                aria-hidden="true"
-                className="bg-primary/8 absolute -top-32 -right-20 -z-10 size-80 rounded-full blur-[110px]"
-              />
-
-              <div
-                aria-hidden="true"
-                className="via-primary/40 absolute inset-x-16 top-0 h-px bg-linear-to-r from-transparent to-transparent"
-              />
-            </>
-          )}
+          ) : null}
 
           {/* ─── Content ──────────────────────────────────────── */}
-          <div className="relative flex flex-col gap-10 lg:flex-row lg:items-end lg:justify-between lg:gap-16">
-            {/* Left: heading + description */}
+          <div className="relative z-10 flex flex-col gap-10 lg:flex-row lg:items-end lg:justify-between lg:gap-16">
+            {/* Left: eyebrow + heading + description + motto */}
             <Stack gap="md" className="max-w-2xl">
+              {eyebrow ? (
+                <p
+                  className={cn(
+                    'font-mono text-[0.7rem] font-semibold tracking-[0.17em] uppercase',
+                    isLuminous ? 'text-[#FF5C61]' : 'text-[#D71920] dark:text-[#FF4D52]'
+                  )}
+                >
+                  {eyebrow}
+                </p>
+              ) : null}
+
               <h2
                 data-particle-text
                 className={cn(
@@ -123,6 +120,17 @@ export function CTA({
                   {description}
                 </p>
               ) : null}
+
+              {motto ? (
+                <p
+                  className={cn(
+                    'font-display pt-1 text-base font-semibold tracking-[-0.01em]',
+                    isLuminous ? 'text-white' : 'text-heading'
+                  )}
+                >
+                  {motto}
+                </p>
+              ) : null}
             </Stack>
 
             {/* Right: action buttons */}
@@ -130,28 +138,13 @@ export function CTA({
               <Link
                 data-particle-cta
                 href={primaryHref}
-                className={cn(
-                  buttonVariants({ variant: 'cta', size: 'lg' }),
-                  'group/primary relative overflow-hidden',
-                  'transition-all duration-400 ease-out',
-                  'shadow-lg hover:-translate-y-px hover:shadow-xl'
-                )}
+                className={cn(buttonVariants({ variant: 'cta', size: 'lg' }), 'group/primary')}
               >
-                {/* Shimmer sweep on hover */}
-                <span
-                  aria-hidden="true"
-                  className={cn(
-                    'pointer-events-none absolute inset-0 -translate-x-full',
-                    'bg-linear-to-r from-transparent via-white/25 to-transparent',
-                    'transition-transform duration-700 ease-out',
-                    'group-hover/primary:translate-x-full'
-                  )}
-                />
-                <span className="relative flex items-center gap-2">
+                <span className="flex items-center gap-2">
                   {primaryLabel}
                   <ArrowRight
                     aria-hidden="true"
-                    className="size-4 transition-transform duration-400 group-hover/primary:translate-x-0.5"
+                    className="size-4 transition-transform duration-200 group-hover/primary:translate-x-0.5"
                   />
                 </span>
               </Link>
@@ -164,14 +157,8 @@ export function CTA({
                       variant: 'outline',
                       size: 'lg',
                     }),
-                    'transition-all duration-400 ease-out',
-                    isLuminous
-                      ? cn(
-                          'border-white/20 bg-white/2 text-white',
-                          'hover:border-white/40 hover:bg-white/6',
-                          'hover:-translate-y-px'
-                        )
-                      : 'hover:-translate-y-px'
+                    isLuminous &&
+                      'border-white/25 bg-transparent text-white hover:border-white/50 hover:bg-white/5'
                   )}
                 >
                   {secondaryLabel}

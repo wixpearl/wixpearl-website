@@ -1,6 +1,7 @@
 import { ArrowRight, Bot, Braces, Cog, ShieldCheck } from 'lucide-react'
 import Link from 'next/link'
 
+import { MagicCard } from '@/components/ui/magic-card'
 import { cn } from '@/lib/utils'
 
 import type { Service, ServiceSlug } from '@/config/content'
@@ -32,110 +33,64 @@ export function ServiceCard({
   return (
     <Link
       href={`/services/${service.slug}`}
-      className={cn('group/card relative block h-full', 'focus-visible:outline-none', className)}
+      className={cn(
+        'group/card relative block h-full rounded-lg focus-visible:outline-none',
+        className
+      )}
     >
-      <article
-        data-particle-surface
-        className={cn(
-          // Container — generous breathing space
-          'relative flex h-full flex-col overflow-hidden rounded-2xl',
-          'border-border bg-card border dark:hover:bg-[var(--surface-raised)]',
-          'p-6 sm:p-7',
-          // Depth — subtle at rest, warmer on hover
-          'shadow-sm',
-          'transition-all duration-400 ease-out',
-          'hover:border-primary/40 hover:-translate-y-1',
-          'hover:shadow-md',
-          // Focus ring for keyboard users
-          'group-focus-visible/card:ring-ring group-focus-visible/card:ring-offset-background group-focus-visible/card:ring-2 group-focus-visible/card:ring-offset-2'
-        )}
+      <MagicCard
+        className="h-full rounded-lg"
+        gradientFrom="#ED1C24"
+        gradientTo="var(--heading)"
+        gradientColor="var(--soft-red)"
+        gradientOpacity={0.65}
       >
-        {/* Top rim highlight — appears on hover */}
-        <span
-          aria-hidden="true"
+        <article
+          data-particle-surface
           className={cn(
-            'pointer-events-none absolute inset-x-6 top-0 h-px',
-            'via-primary/50 bg-linear-to-r from-transparent to-transparent',
-            'opacity-0 transition-opacity duration-400',
-            'group-hover/card:opacity-100'
-          )}
-        />
-
-        {/* Ambient corner glow — quiet depth on hover */}
-        <span
-          aria-hidden="true"
-          className={cn(
-            'pointer-events-none absolute -top-16 -right-16 size-40 rounded-full',
-            'bg-primary/8 blur-3xl',
-            'opacity-0 transition-opacity duration-500',
-            'group-hover/card:opacity-100'
-          )}
-        />
-
-        {/* ─── Icon ─────────────────────────────────────────── */}
-        <div
-          className={cn(
-            'relative mb-6 inline-flex size-12 shrink-0 items-center justify-center rounded-xl',
-            'border-border bg-primary/10 text-primary border',
-            'transition-all duration-400 ease-out',
-            'group-hover/card:border-primary/40 group-hover/card:-translate-y-0.5',
-            'group-hover/card:bg-primary/20'
+            'relative flex h-full flex-col rounded-lg p-6 sm:p-7',
+            'group-focus-visible/card:ring-ring group-focus-visible/card:ring-offset-background group-focus-visible/card:ring-2 group-focus-visible/card:ring-offset-2'
           )}
         >
-          <Icon
-            className="size-5 transition-transform duration-400 group-hover/card:scale-105"
-            aria-hidden="true"
-          />
-        </div>
-
-        {/* ─── Title ────────────────────────────────────────── */}
-        <Heading className="font-display text-heading text-xl font-semibold tracking-[-0.01em]">
-          {titleVariant === 'short' ? service.shortTitle : service.title}
-        </Heading>
-
-        {/* ─── Description ──────────────────────────────────── */}
-        <p className="text-muted-foreground mt-3 text-[0.9375rem] leading-7 text-pretty">
-          {service.description}
-        </p>
-
-        {/* ─── Capabilities tags ───────────────────────────── */}
-        {service.capabilities.length > 0 ? (
+          {/* ─── Icon ─────────────────────────────────────────── */}
           <div
-            className="mt-5 flex flex-wrap gap-1.5"
-            aria-label={`${service.shortTitle} key capabilities`}
-          >
-            {service.capabilities.slice(0, 3).map((capability) => (
-              <span
-                key={capability}
-                className="border-border/70 bg-muted/80 text-muted-foreground rounded-md border px-2 py-0.5 text-[0.72rem] font-medium dark:border-white/10 dark:bg-white/4"
-              >
-                {capability}
-              </span>
-            ))}
-          </div>
-        ) : null}
-
-        {/* ─── Footer CTA — pinned to bottom ────────────────── */}
-        <div className="mt-auto pt-6">
-          <span
             className={cn(
-              'text-primary inline-flex items-center gap-1.5 text-sm font-semibold',
-              'transition-colors duration-300',
-              'group-hover/card:text-primary'
+              'mb-5 inline-flex size-10 shrink-0 items-center justify-center rounded-md border',
+              'border-[#ED1C24]/15 bg-[#FFF1F2] text-[#D71920]',
+              'dark:border-[#ED1C24]/25 dark:bg-[#421C26] dark:text-[#FF4D52]',
+              'transition-colors duration-200 group-hover/card:bg-[#ED1C24] group-hover/card:text-white dark:group-hover/card:bg-[#ED1C24] dark:group-hover/card:text-white'
             )}
           >
-            Learn more
-            <ArrowRight
+            <Icon className="size-5" aria-hidden="true" />
+          </div>
+
+          {/* ─── Title ────────────────────────────────────────── */}
+          <Heading className="font-display text-heading text-xl font-semibold tracking-[-0.01em]">
+            {titleVariant === 'short' ? service.shortTitle : service.title}
+          </Heading>
+
+          {/* ─── Description ──────────────────────────────────── */}
+          <p className="text-muted-foreground mt-3 text-[0.9375rem] leading-7 text-pretty">
+            {service.description}
+          </p>
+
+          {/* ─── Footer CTA — pinned to bottom ────────────────── */}
+          <div className="mt-auto pt-6">
+            <span
               className={cn(
-                'size-3.5',
-                'transition-transform duration-400 ease-out',
-                'group-hover/card:translate-x-1'
+                'inline-flex items-center gap-1.5 text-sm font-semibold',
+                'text-[#D71920] dark:text-[#FF4D52]'
               )}
-              aria-hidden="true"
-            />
-          </span>
-        </div>
-      </article>
+            >
+              Learn more
+              <ArrowRight
+                className="size-3.5 transition-transform duration-200 group-hover/card:translate-x-1"
+                aria-hidden="true"
+              />
+            </span>
+          </div>
+        </article>
+      </MagicCard>
     </Link>
   )
 }

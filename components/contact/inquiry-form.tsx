@@ -80,7 +80,7 @@ export function InquiryForm() {
       />
       <div
         aria-hidden="true"
-        className="absolute -bottom-32 -left-24 -z-10 size-72 rounded-full bg-[#6DAAF7]/6 blur-[100px]"
+        className="bg-primary/5 absolute -bottom-32 -left-24 -z-10 size-72 rounded-full blur-[100px]"
       />
 
       <input type="hidden" name="startedAt" value={startedAt} />

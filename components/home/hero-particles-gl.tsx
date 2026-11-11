@@ -1,11 +1,30 @@
 'use client'
 
 import { useTheme } from 'next-themes'
-import { useEffect } from 'react'
+import { useEffect, useSyncExternalStore } from 'react'
 
 import { canUseHeroParticles } from './hero-particle-policy'
 
 import type { ParticlesGLController } from '@/graphics/particlesGL/particles-webgl'
+
+function subscribeToDarkClass(callback: () => void) {
+  const observer = new MutationObserver(callback)
+  observer.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ['class'],
+  })
+  return () => {
+    observer.disconnect()
+  }
+}
+
+function getDarkSnapshot() {
+  return document.documentElement.classList.contains('dark')
+}
+
+function getServerDarkSnapshot() {
+  return false
+}
 
 interface NavigatorWithHints extends Navigator {
   readonly connection?: { readonly saveData?: boolean }
@@ -33,6 +52,7 @@ function resetHost(host: HTMLElement) {
 
 export function HeroParticlesGL() {
   const { resolvedTheme } = useTheme()
+  const isDark = useSyncExternalStore(subscribeToDarkClass, getDarkSnapshot, getServerDarkSnapshot)
 
   useEffect(() => {
     const host = document.querySelector<HTMLElement>('[data-particle-host]')
@@ -87,7 +107,7 @@ export function HeroParticlesGL() {
       controller?.cleanup()
       resetHost(host)
     }
-  }, [resolvedTheme])
+  }, [isDark, resolvedTheme])
 
   return null
 }

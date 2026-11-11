@@ -1,187 +1,221 @@
-import { Bot, Braces, Cog, Radio, ShieldCheck } from 'lucide-react'
+'use client'
+
+import { Layers, Lightbulb, Radio, Sparkles, TrendingUp } from 'lucide-react'
+import { useRef } from 'react'
+
+import { AnimatedBeam } from '@/components/ui/animated-beam'
+import { BorderBeam } from '@/components/ui/border-beam'
+import { DotPattern } from '@/components/ui/dot-pattern'
+import { OrbitingCircles } from '@/components/ui/orbiting-circles'
 
 import { HeroLogo } from './hero-logo'
 
-const capabilities = [
-  {
-    label: 'Software',
-    detail: 'Systems built around real work',
-    icon: Braces,
-    position: 'top-5 left-0 sm:top-7 sm:left-2',
-  },
-  {
-    label: 'Practical AI',
-    detail: 'Useful intelligence with oversight',
-    icon: Bot,
-    position: 'top-5 right-0 sm:top-7 sm:right-2',
-  },
-  {
-    label: 'Automation',
-    detail: 'Reliable connected workflows',
-    icon: Cog,
-    position: 'bottom-5 left-0 sm:bottom-7 sm:left-2',
-  },
-  {
-    label: 'Consulting',
-    detail: 'Clear technical decisions',
-    icon: ShieldCheck,
-    position: 'right-0 bottom-5 sm:right-2 sm:bottom-7',
-  },
-] as const
-
-const connectors = ['M50 50 L22 23', 'M50 50 L78 23', 'M50 50 L22 77', 'M50 50 L78 77']
-
 export function HeroVisual() {
+  const containerRef = useRef<HTMLDivElement>(null)
+  const centerRef = useRef<HTMLDivElement>(null)
+  const visionRef = useRef<HTMLLIElement>(null)
+  const innovationRef = useRef<HTMLLIElement>(null)
+  const creationRef = useRef<HTMLLIElement>(null)
+  const impactRef = useRef<HTMLLIElement>(null)
+
+  const pillars = [
+    {
+      ref: visionRef,
+      label: 'Vision',
+      detail: 'Every great solution starts with an idea.',
+      icon: Lightbulb,
+      position: 'top-4 left-0 sm:top-6 sm:left-2',
+    },
+    {
+      ref: innovationRef,
+      label: 'Innovation',
+      detail: 'Exploring smarter ways to create value.',
+      icon: Sparkles,
+      position: 'top-4 right-0 sm:top-6 sm:right-2',
+    },
+    {
+      ref: creationRef,
+      label: 'Creation',
+      detail: 'Turning possibilities into real solutions.',
+      icon: Layers,
+      position: 'bottom-4 left-0 sm:bottom-6 sm:left-2',
+    },
+    {
+      ref: impactRef,
+      label: 'Impact',
+      detail: 'Building technology that makes a difference.',
+      icon: TrendingUp,
+      position: 'right-0 bottom-4 sm:right-2 sm:bottom-6',
+    },
+  ] as const
+
   return (
     <div
       data-slot="hero-system"
-      className="border-border bg-card text-foreground dark:border-border dark:bg-card dark:text-foreground relative isolate overflow-hidden rounded-[2rem] border p-4 shadow-sm sm:p-6"
+      className="border-border text-foreground relative isolate overflow-hidden rounded-xl border bg-[#F6F8FB] p-5 sm:p-6 dark:bg-[#1B1B1B]"
     >
-      {/* Radial glow — light variant */}
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 -z-10 transition-opacity duration-300 dark:opacity-0"
-        style={{
-          background:
-            'radial-gradient(circle at 50% 44%, rgba(109, 170, 247, 0.12), transparent 31%), radial-gradient(circle at 68% 42%, rgba(11, 36, 71, 0.06), transparent 24%)',
-        }}
-      />
-      {/* Radial glow — dark variant */}
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 -z-10 opacity-0 transition-opacity duration-300 dark:opacity-100"
-        style={{
-          background:
-            'radial-gradient(circle at 50% 44%, rgba(109, 170, 247, 0.2), transparent 31%), radial-gradient(circle at 68% 42%, rgba(237, 28, 36, 0.08), transparent 24%)',
-        }}
-      />
-      {/* Grid overlay — tinted via currentColor */}
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 -z-10 opacity-[0.4] dark:opacity-[0.06]"
-        style={{
-          backgroundImage:
-            'linear-gradient(currentColor 1px, transparent 1px), linear-gradient(90deg, currentColor 1px, transparent 1px)',
-          backgroundSize: '34px 34px',
-          maskImage: 'radial-gradient(circle at center, black, transparent 72%)',
-        }}
-      />
-      {/* Vignette */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,transparent_42%,rgba(246,248,251,0.65)_100%)] dark:bg-[radial-gradient(ellipse_at_center,transparent_42%,rgba(7,24,47,0.75)_100%)]"
-      />
-      {/* Top accent line */}
-      <div
-        aria-hidden="true"
-        className="absolute inset-x-8 top-0 h-px bg-linear-to-r from-transparent via-[#6DAAF7]/40 to-transparent dark:via-[#6DAAF7]/60"
+      {/* Magic UI BorderBeam sweeping cleanly along outer edge */}
+      <BorderBeam
+        size={220}
+        duration={7}
+        borderWidth={2}
+        colorFrom="#ED1C24"
+        colorTo="var(--heading)"
       />
 
-      <div className="border-border relative flex items-center justify-between border-b pb-4">
-        <div className="text-heading flex items-center gap-2 text-[0.68rem] font-semibold tracking-[0.18em] uppercase">
-          <span className="relative flex size-2" aria-hidden="true">
-            <span className="hero-pearl-breathe bg-success absolute inset-0 rounded-full" />
-            <span className="bg-success relative size-2 rounded-full" />
+      {/* ─── Header Bar ────────────────────────────────────── */}
+      <div className="border-border relative z-10 flex items-center justify-between border-b pb-4">
+        <div className="flex items-center gap-2.5">
+          <span className="relative flex size-2.5" aria-hidden="true">
+            <span className="bg-success absolute inline-flex size-full animate-ping rounded-full opacity-75" />
+            <span className="bg-success relative inline-flex size-2.5 rounded-full" />
           </span>
-          One connected system
+          <span className="text-heading font-mono text-[0.7rem] font-bold tracking-[0.2em] uppercase">
+            Where ideas come to life
+          </span>
         </div>
-        <span className="text-muted-foreground flex items-center gap-1.5 font-mono text-[0.65rem] tracking-wider">
-          <Radio className="size-3" aria-hidden="true" />
-          WP / SIGNAL
-        </span>
+
+        <div className="text-muted-foreground flex items-center gap-2 font-mono text-[0.68rem] tracking-wider uppercase">
+          <Radio
+            className="size-3.5 animate-pulse text-[#ED1C24] dark:text-[#FF4D52]"
+            aria-hidden="true"
+          />
+          <span>WIXPEARL / INNOVATION</span>
+        </div>
       </div>
 
-      <div className="relative min-h-108 sm:min-h-116" aria-label="WixPearl capabilities">
-        <svg
-          aria-hidden="true"
-          className="text-muted-foreground/40 dark:text-muted-foreground/30 absolute inset-0 size-full"
-          viewBox="0 0 100 100"
-          preserveAspectRatio="none"
-        >
-          <defs>
-            <linearGradient id="hero-connector" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stopColor="#6DAAF7" />
-              <stop offset="50%" stopColor="#0B2447" className="dark:[stop-color:#6DAAF7]" />
-              <stop offset="100%" stopColor="#ED1C24" />
-            </linearGradient>
-          </defs>
+      {/* ─── Magic UI Interactive Diagram Stage ───────────────── */}
+      <div
+        ref={containerRef}
+        className="relative flex min-h-104 items-center justify-center sm:min-h-112"
+        aria-label="WixPearl innovation pillars"
+      >
+        {/* Magic UI DotPattern backdrop fading radially */}
+        <DotPattern
+          width={20}
+          height={20}
+          cr={1}
+          className="text-heading/20 [mask-image:radial-gradient(260px_circle_at_center,white,transparent)] dark:text-white/15"
+        />
 
-          <circle
-            cx="50"
-            cy="50"
-            r="31"
-            fill="none"
-            stroke="currentColor"
-            strokeOpacity="0.22"
-            strokeWidth="0.25"
-          />
+        {/* Magic UI AnimatedBeams linking all 4 nodes to Center Pearl */}
+        <AnimatedBeam
+          containerRef={containerRef}
+          fromRef={visionRef}
+          toRef={centerRef}
+          curvature={-32}
+          duration={3.4}
+          pathColor="#64748B"
+          pathOpacity={0.22}
+          pathWidth={1.8}
+          gradientStartColor="#ED1C24"
+          gradientStopColor="#FF5C61"
+        />
+        <AnimatedBeam
+          containerRef={containerRef}
+          fromRef={innovationRef}
+          toRef={centerRef}
+          curvature={-32}
+          reverse
+          delay={0.8}
+          duration={3.4}
+          pathColor="#64748B"
+          pathOpacity={0.22}
+          pathWidth={1.8}
+          gradientStartColor="#ED1C24"
+          gradientStopColor="#A1A1AA"
+        />
+        <AnimatedBeam
+          containerRef={containerRef}
+          fromRef={creationRef}
+          toRef={centerRef}
+          curvature={32}
+          delay={1.6}
+          duration={3.4}
+          pathColor="#64748B"
+          pathOpacity={0.22}
+          pathWidth={1.8}
+          gradientStartColor="#ED1C24"
+          gradientStopColor="#FF5C61"
+        />
+        <AnimatedBeam
+          containerRef={containerRef}
+          fromRef={impactRef}
+          toRef={centerRef}
+          curvature={32}
+          reverse
+          delay={2.4}
+          duration={3.4}
+          pathColor="#64748B"
+          pathOpacity={0.22}
+          pathWidth={1.8}
+          gradientStartColor="#ED1C24"
+          gradientStopColor="#A1A1AA"
+        />
 
-          {connectors.map((connector, index) => (
-            <g key={connector}>
-              <path
-                d={connector}
-                fill="none"
-                stroke="currentColor"
-                strokeOpacity="0.22"
-                strokeWidth="0.45"
-              />
-              <path
-                d={connector}
-                fill="none"
-                stroke="url(#hero-connector)"
-                strokeWidth="0.55"
-                pathLength="100"
-                className="hero-connector-sweep"
-                style={{ animationDelay: `${String(index * 420)}ms` }}
-              />
-            </g>
-          ))}
-        </svg>
-
+        {/* Magic UI OrbitingCircles + Playwright .hero-orbit track */}
         <div
           aria-hidden="true"
-          className="absolute top-1/2 left-1/2 size-44 -translate-x-1/2 -translate-y-1/2 sm:size-52"
+          className="pointer-events-none absolute inset-0 flex items-center justify-center"
         >
-          <div className="hero-orbit border-border/80 dark:border-border relative size-full rounded-full border shadow-[0_0_36px_-18px_rgba(109,170,247,0.25)_inset] dark:shadow-[0_0_36px_-18px_rgba(109,170,247,0.4)_inset]">
-            <span className="ambient-orb absolute top-1/2 -right-1.5 size-3 -translate-y-1/2 rounded-full shadow-[0_0_18px_4px_rgba(109,170,247,0.4)]" />
-          </div>
+          <div className="hero-orbit relative size-48 rounded-full border border-[#ED1C24]/25 sm:size-56 dark:border-[#FF4D52]/30" />
+
+          <OrbitingCircles radius={92} duration={16} iconSize={14} path={false}>
+            <span className="size-2.5 rounded-full bg-[#ED1C24] ring-4 ring-[#F6F8FB] dark:ring-[#1B1B1B]" />
+            <span className="size-2 rounded-full bg-[#0B2447] ring-3 ring-[#F6F8FB] dark:bg-white/80 dark:ring-[#1B1B1B]" />
+          </OrbitingCircles>
+
+          <OrbitingCircles radius={124} duration={24} reverse iconSize={12}>
+            <span className="size-2 rounded-full bg-[#0B2447]/55 dark:bg-white/40" />
+          </OrbitingCircles>
         </div>
 
-        <div className="absolute top-1/2 left-1/2 grid -translate-x-1/2 -translate-y-1/2 place-items-center">
+        {/* ─── Center Core Emblem & Logo ─────────────────────── */}
+        <div ref={centerRef} className="relative z-20 grid place-items-center">
           <div
             aria-hidden="true"
-            className="hero-pearl-breathe absolute size-44 rounded-full bg-[#6DAAF7]/15 blur-3xl dark:bg-[#6DAAF7]/12"
+            className="hero-pearl-breathe pointer-events-none absolute size-38 rounded-full bg-[#ED1C24]/18 blur-2xl dark:bg-[#ED1C24]/25"
           />
-          <div className="hero-pearl relative grid size-24 place-items-center rounded-full sm:size-28">
+
+          <div className="hero-pearl relative grid size-26 place-items-center rounded-full sm:size-28">
             <HeroLogo glow />
             <HeroLogo />
             <span aria-hidden="true" className="hero-pearl-sheen absolute inset-0 z-3" />
           </div>
         </div>
 
+        {/* ─── 4 Innovation Cards ────────────────────────────── */}
         <ul className="contents">
-          {capabilities.map(({ label, detail, icon: Icon, position }) => (
+          {pillars.map(({ ref, label, detail, icon: Icon, position }) => (
             <li
               key={label}
-              className={`border-border bg-card/85 hover:border-primary/40 hover:bg-card dark:border-border dark:bg-card/90 dark:hover:border-primary/50 dark:hover:bg-card absolute w-[43%] rounded-2xl border p-3.5 shadow-sm backdrop-blur-xl transition-[border-color,background-color,transform] duration-300 hover:-translate-y-0.5 sm:w-[42%] sm:p-4 ${position}`}
+              ref={ref}
+              className={`group/card border-border bg-card absolute z-20 w-[46%] rounded-lg border p-3 transition-colors duration-200 hover:border-[#ED1C24]/50 sm:w-[44%] sm:p-3.5 dark:hover:bg-[var(--surface-raised)] ${position}`}
             >
-              <div className="flex items-center gap-2.5">
-                <span className="border-border bg-primary/10 text-primary dark:border-border dark:bg-primary/20 dark:text-primary grid size-8 shrink-0 place-items-center rounded-lg border">
+              <div className="flex items-start gap-2.5">
+                <span className="grid size-8 shrink-0 place-items-center rounded-md border border-[#ED1C24]/15 bg-[#FFF1F2] text-[#D71920] transition-colors group-hover/card:bg-[#ED1C24] group-hover/card:text-white dark:border-[#ED1C24]/25 dark:bg-[#38181D] dark:text-[#FF4D52] dark:group-hover/card:bg-[#ED1C24] dark:group-hover/card:text-white">
                   <Icon className="size-4" aria-hidden="true" />
                 </span>
-                <span className="text-heading text-sm font-semibold tracking-tight">{label}</span>
+                <div className="min-w-0">
+                  <span className="text-heading font-display block text-sm font-semibold tracking-tight sm:text-[0.95rem]">
+                    {label}
+                  </span>
+                  <p className="text-muted-foreground mt-0.5 hidden text-xs leading-snug text-pretty sm:block">
+                    {detail}
+                  </p>
+                </div>
               </div>
-              <p className="text-muted-foreground mt-2 hidden text-xs leading-5 sm:block">
-                {detail}
-              </p>
             </li>
           ))}
         </ul>
       </div>
 
-      <div className="border-border relative flex items-center justify-between border-t pt-4 text-xs">
-        <span className="text-muted-foreground">Designed for your operation</span>
-        <span className="text-heading font-medium">Idea → dependable system</span>
+      {/* ─── Footer Bar ────────────────────────────────────── */}
+      <div className="border-border text-muted-foreground relative z-10 flex flex-col gap-2 border-t pt-4 text-xs sm:flex-row sm:items-center sm:justify-between">
+        <span>Built around your vision</span>
+        <span className="text-heading font-medium">
+          Ideas <span className="text-[#ED1C24] dark:text-[#FF4D52]">→</span> Reality
+        </span>
       </div>
     </div>
   )

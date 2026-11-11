@@ -1,23 +1,32 @@
-import { cn } from 'cn'
 import { Check } from 'lucide-react'
+import Image from 'next/image'
 
 import { Container } from '@/components/layout/container'
 import { Section } from '@/components/layout/section'
 import { SectionHeading } from '@/components/shared/section-heading'
+import { BlurFade } from '@/components/ui/blur-fade'
+import wixpearl3dImage from '@/public/assets/wixpearl-3d-image.png'
 
-const engineeringProof = [
+const differences = [
   {
-    title: 'Secure foundations',
-    description: 'Security is considered in the architecture, data flow, delivery, and operation.',
-  },
-  {
-    title: 'Dependable by design',
+    title: 'Your Vision Comes First',
     description:
-      'Reliability and maintainability shape the system from the first technical decision.',
+      'We listen, understand, and shape every solution around your unique goals and aspirations.',
   },
   {
-    title: 'Direct engineering access',
-    description: 'Work directly with engineers who explain trade-offs and remain accountable.',
+    title: 'Creativity Meets Technology',
+    description:
+      'We bring creative thinking and technical expertise together to turn complex challenges into meaningful solutions.',
+  },
+  {
+    title: 'Built With Purpose',
+    description:
+      'Every feature, interaction, and experience should serve a purpose and create real value.',
+  },
+  {
+    title: "Ready for What's Next",
+    description:
+      "We think beyond today's requirements, creating adaptable solutions with tomorrow's possibilities in mind.",
   },
 ] as const
 
@@ -27,79 +36,46 @@ export function EngineeringProofSection() {
       <Container>
         <div
           data-particle-surface
-          className={cn(
-            'surface-dark relative isolate overflow-hidden rounded-[2rem]',
-            'px-8 py-12 sm:px-12 sm:py-16 lg:px-16 lg:py-20',
-            'shadow-[0_2px_0_0_rgba(255,255,255,0.06)_inset,0_40px_120px_-60px_rgba(7,24,47,0.7)]'
-          )}
+          className="surface-subtle relative overflow-hidden rounded-xl p-8 sm:p-10 lg:p-12"
         >
-          <div
-            aria-hidden="true"
-            className="pearl-grid absolute inset-0 -z-10 opacity-[0.08]"
-            style={{ maskImage: 'radial-gradient(ellipse at center, black 40%, transparent 90%)' }}
-          />
-          <div
-            aria-hidden="true"
-            className="absolute -top-32 -right-24 -z-10 size-96 rounded-full bg-[#6DAAF7]/12 blur-[120px]"
-          />
-          <div
-            aria-hidden="true"
-            className="absolute -bottom-32 -left-24 -z-10 size-80 rounded-full bg-[#0B2447]/35 blur-[110px]"
-          />
-          <div
-            aria-hidden="true"
-            className="absolute inset-x-16 top-0 h-px bg-linear-to-r from-transparent via-white/20 to-transparent"
-          />
-          <div className="relative grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
-            <SectionHeading
-              eyebrow="Engineering proof"
-              title="Care you can see in every decision"
-              description="Strong systems come from disciplined choices, visible trade-offs, and an accountable engineering relationship."
-              className={cn(
-                '**:data-[slot=eyebrow]:text-[#6DAAF7]',
-                '[&_p]:text-[#D7DFE9]',
-                '[&_h2]:tracking-[-0.02em] [&_h2]:text-white'
-              )}
-            />
-            <ul className="divide-y divide-[#29425C] border-y border-[#29425C]">
-              {engineeringProof.map((item) => (
-                <li
-                  key={item.title}
-                  className={cn(
-                    'group/item relative grid gap-4 py-6 sm:grid-cols-[auto_1fr] sm:gap-5',
-                    'transition-colors duration-300 hover:bg-white/1.5'
-                  )}
-                >
-                  <span
-                    aria-hidden="true"
-                    className={cn(
-                      'absolute top-1/2 left-0 h-0 w-px -translate-y-1/2',
-                      'bg-linear-to-b from-transparent via-[#6DAAF7]/60 to-transparent',
-                      'transition-all duration-500 group-hover/item:h-3/4'
-                    )}
-                  />
-                  <span
-                    className={cn(
-                      'mt-0.5 grid size-8 shrink-0 place-items-center rounded-full',
-                      'border border-[#6DAAF7]/30 bg-linear-to-br from-[#6DAAF7]/15 to-[#6DAAF7]/2 text-[#6DAAF7]',
-                      'transition-all duration-400 ease-out group-hover/item:scale-105',
-                      'group-hover/item:border-[#6DAAF7]/50 group-hover/item:bg-[#6DAAF7]/20',
-                      'group-hover/item:shadow-[0_0_20px_-4px_rgba(109,170,247,0.4)]'
-                    )}
-                  >
-                    <Check className="size-4" aria-hidden="true" />
-                  </span>
-                  <div className="min-w-0">
-                    <h3 className="font-display text-xl font-semibold tracking-[-0.01em] text-white">
+          <div className="grid items-center gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
+            {/* Left: Heading + Clean System Preview */}
+            <div className="space-y-8">
+              <SectionHeading
+                eyebrow="The WixPearl difference"
+                title="Your Vision Is at the Heart of Everything We Create."
+                description="Great technology starts with understanding people, their challenges, and what they want to achieve. At WixPearl, we focus on understanding your ideas, exploring possibilities, and creating digital experiences with a clear purpose."
+              />
+
+              {/* 3D Brand Architecture Visual */}
+              <div className="mx-auto max-w-xs sm:mx-0 sm:max-w-sm">
+                <Image
+                  src={wixpearl3dImage}
+                  alt="WixPearl 3D digital platform illustration"
+                  className="h-auto w-full object-contain"
+                  sizes="(min-width: 1024px) 24rem, 20rem"
+                />
+              </div>
+            </div>
+
+            {/* Right: 4 Key Differentiators Grid */}
+            <div className="grid gap-5 sm:grid-cols-2">
+              {differences.map((item, index) => (
+                <BlurFade key={item.title} delay={0.05 * index} inView>
+                  <article className="border-border bg-card flex h-full flex-col rounded-lg border p-5 sm:p-6">
+                    <span className="mb-4 grid size-7 shrink-0 place-items-center rounded-full bg-[#ED1C24] text-white">
+                      <Check className="size-3.5 stroke-[2.5]" aria-hidden="true" />
+                    </span>
+                    <h3 className="font-display text-heading text-lg font-semibold tracking-[-0.01em]">
                       {item.title}
                     </h3>
-                    <p className="mt-2 text-[0.9375rem] leading-7 text-pretty text-[#9EADBE]">
+                    <p className="text-muted-foreground mt-2 text-sm leading-6 text-pretty">
                       {item.description}
                     </p>
-                  </div>
-                </li>
+                  </article>
+                </BlurFade>
               ))}
-            </ul>
+            </div>
           </div>
         </div>
       </Container>

@@ -3,8 +3,8 @@ import { cn } from '@/lib/utils'
 import type { ComponentProps } from 'react'
 
 const tones = {
-  primary: 'text-primary',
-  accent: 'text-accent',
+  primary: 'text-[#D71920] dark:text-[#FF4D52]',
+  accent: 'text-[#D71920] dark:text-[#FF4D52]',
   muted: 'text-muted-foreground',
   foreground: 'text-foreground',
 } as const

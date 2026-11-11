@@ -5,10 +5,10 @@ import { useEffect, useRef } from 'react'
 import type { ParticleFieldController } from '@/graphics/particle-field-in-house/types'
 
 const fallbackNodes = [
-  ['5%', '12%', 'h-40 w-64 -rotate-12', 'bg-[#6DAAF7]/14'],
-  ['66%', '8%', 'h-44 w-60 rotate-10', 'bg-[#0B2447]/12 dark:bg-[#6DAAF7]/12'],
+  ['5%', '12%', 'h-40 w-64 -rotate-12', 'bg-[#6DAAF7]/10 dark:bg-white/6'],
+  ['66%', '8%', 'h-44 w-60 rotate-10', 'bg-[#0B2447]/10 dark:bg-white/5'],
   ['14%', '62%', 'h-36 w-72 rotate-6', 'bg-[#ED1C24]/10'],
-  ['70%', '66%', 'h-40 w-68 -rotate-6', 'bg-[#6DAAF7]/12'],
+  ['70%', '66%', 'h-40 w-68 -rotate-6', 'bg-[#6DAAF7]/10 dark:bg-[#ED1C24]/8'],
 ] as const
 
 export function HomepageParticleField() {

@@ -38,7 +38,7 @@ export function MobileNavigation() {
       <dialog
         ref={dialogRef}
         aria-labelledby="mobile-navigation-title"
-        className="text-foreground border-border m-0 ml-auto h-full max-h-none w-[min(90vw,24rem)] max-w-none border-l bg-transparent p-0 backdrop:bg-[#07182F]/70 backdrop:backdrop-blur-sm"
+        className="text-foreground border-border m-0 ml-auto h-full max-h-none w-[min(90vw,24rem)] max-w-none border-l bg-transparent p-0 backdrop:bg-[#0B2447]/65 backdrop:backdrop-blur-sm dark:backdrop:bg-black/75"
         onClick={(event) => {
           if (event.target === event.currentTarget) closeNavigation()
         }}
