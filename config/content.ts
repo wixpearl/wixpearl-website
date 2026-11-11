@@ -209,12 +209,10 @@ export const principles = [
 ] as const satisfies readonly Principle[]
 
 export const technologies = [
-  'Next.js',
-  'React',
-  'TypeScript',
-  'Node.js',
-  'Python',
-  'Cloud platforms',
-  'AI integrations',
-  'Workflow automation',
+  'Software Engineering',
+  'Artificial Intelligence',
+  'Cloud Computing',
+  'Intelligent Automation',
+  'Data & Analytics',
+  'Emerging Technologies',
 ] as const

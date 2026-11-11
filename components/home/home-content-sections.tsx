@@ -182,10 +182,14 @@ export function TechnologySection() {
 
           <div
             data-particle-surface
-            className="pearl-surface flex flex-wrap gap-3 rounded-lg p-6 sm:p-8"
+            className="pearl-surface grid gap-3 rounded-lg p-6 sm:grid-cols-2 sm:p-8"
           >
             {technologies.map((technology) => (
-              <TechnologyBadge key={technology} name={technology} />
+              <TechnologyBadge
+                key={technology}
+                name={technology}
+                className="justify-center sm:justify-start"
+              />
             ))}
           </div>
         </div>
