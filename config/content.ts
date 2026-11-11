@@ -36,6 +36,7 @@ export interface CaseStudy {
 export interface DeliveryStep {
   number: string
   title: string
+  subtitle?: string
   description: string
 }
 
@@ -140,49 +141,70 @@ export function getPublishedCaseStudy(slug: string) {
 export const deliverySteps = [
   {
     number: '01',
-    title: 'Understand',
-    description:
-      'We map the business problem, users, constraints, and the outcome worth achieving.',
+    title: 'Discover',
+    subtitle: 'It starts with understanding you.',
+    description: 'We explore your ideas, challenges, and goals to uncover what truly matters.',
   },
   {
     number: '02',
-    title: 'Design',
+    title: 'Imagine',
+    subtitle: 'We turn possibilities into a clear direction.',
     description:
-      'We shape the smallest robust solution and make architecture and delivery trade-offs visible.',
+      'Through creative thinking and thoughtful planning, we shape ideas into meaningful concepts.',
   },
   {
     number: '03',
-    title: 'Build',
+    title: 'Create',
+    subtitle: 'Where ideas become reality.',
     description:
-      'We deliver in clear increments with testing, security, and maintainability built into the work.',
+      'We bring concepts to life using modern technology, intuitive design, and purposeful development.',
   },
   {
     number: '04',
-    title: 'Improve',
-    description: 'We support the system in production and evolve it using evidence from real use.',
+    title: 'Refine',
+    subtitle: 'Making every detail count.',
+    description:
+      'We test, improve, and fine-tune each solution to create an experience that works.',
+  },
+  {
+    number: '05',
+    title: 'Evolve',
+    subtitle: 'Built for today. Ready for tomorrow.',
+    description:
+      'We think ahead, creating flexible solutions that can grow and adapt as needs change.',
   },
 ] as const satisfies readonly DeliveryStep[]
 
 export const principles = [
   {
-    title: 'Secure by design',
+    title: 'Customer Focus',
     description:
-      'Security is considered in the architecture, data flow, delivery process, and operations.',
+      'We put people and their goals at the center of every solution, ensuring technology serves a real purpose.',
   },
   {
-    title: 'Built for real work',
+    title: 'Quality',
     description:
-      'Every decision starts with the people, constraints, and day-to-day work the system must support.',
+      'Great solutions come from attention to detail, thoughtful architecture, and a commitment to doing things well.',
   },
   {
-    title: 'Reliable over flashy',
+    title: 'Innovation',
     description:
-      'We favor clear engineering, predictable behavior, and maintainable systems over unnecessary novelty.',
+      'We embrace new ideas, challenge conventional thinking, and explore practical ways to solve real problems.',
   },
   {
-    title: 'Personal and pragmatic',
+    title: 'Integrity',
     description:
-      'You work directly with engineers who communicate clearly and care about the business result.',
+      'We value honesty, transparency, and responsible engineering relationships in every collaboration.',
+  },
+  {
+    title: 'Collaboration',
+    description:
+      'The best results come from working closely together, sharing ideas, and aligning around business outcomes.',
+  },
+  {
+    title: 'Growth',
+    description:
+      'We continuously learn, adapt, and improve so the solutions we create remain dependable in an evolving world.',
   },
 ] as const satisfies readonly Principle[]
 
