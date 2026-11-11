@@ -4,9 +4,9 @@ import { expect, test } from '@playwright/test'
 test('homepage exposes the core proposition and working CTAs', async ({ page }) => {
   await page.goto('/')
   await expect(page.getByRole('heading', { level: 1 })).toContainText(
-    'Software shaped around how your business works'
+    'Turning Ideas Into Digital Reality'
   )
-  await page.getByRole('link', { name: 'Discuss your project' }).click()
+  await page.getByRole('link', { name: "Let's Build Together" }).click()
   await expect(page).toHaveURL(/\/contact$/)
 })
 
@@ -81,10 +81,10 @@ test('cinematic hero keeps its capability nodes visible', async ({ page }) => {
   await expect(hero).toBeVisible()
   await expect(hero).toHaveCount(1)
   await expect(hero.getByRole('listitem')).toHaveCount(4)
-  await expect(hero.getByText('Software', { exact: true })).toBeVisible()
-  await expect(hero.getByText('Practical AI', { exact: true })).toBeVisible()
-  await expect(hero.getByText('Automation', { exact: true })).toBeVisible()
-  await expect(hero.getByText('Consulting', { exact: true })).toBeVisible()
+  await expect(hero.getByText('Vision', { exact: true })).toBeVisible()
+  await expect(hero.getByText('Innovation', { exact: true })).toBeVisible()
+  await expect(hero.getByText('Creation', { exact: true })).toBeVisible()
+  await expect(hero.getByText('Impact', { exact: true })).toBeVisible()
   await expect(hero.locator('[data-slot="hero-pearl-logo"]')).toHaveCount(1)
 })
 
@@ -115,7 +115,7 @@ test('hero pearl becomes an interactive decorative particle system', async ({ pa
   await page.mouse.move(bounds.x + bounds.width + 12, bounds.y + bounds.height / 2)
   await expect(canvas).toHaveAttribute('data-particles-active', 'false')
 
-  await page.getByRole('link', { name: 'Explore services' }).click()
+  await page.getByRole('link', { name: 'Explore What We Do' }).click()
   await expect(page).toHaveURL(/\/services$/)
   await expect(page.locator('canvas[data-particles-target]')).toHaveCount(0)
 
@@ -129,7 +129,7 @@ test('cinematic hero respects reduced-motion preferences', async ({ page }) => {
   await page.goto('/')
 
   const hero = page.locator('[data-slot="hero-system"]')
-  await expect(hero).toContainText('One connected system')
+  await expect(hero).toContainText('Where ideas come to life')
   await expect(page.locator('[data-particle-host]')).toHaveAttribute(
     'data-particles-motion',
     'static'
