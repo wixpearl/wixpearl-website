@@ -1,30 +1,19 @@
 export const footer = {
-  services: [
+  explore: [
     {
-      label: 'Custom Software',
-      href: '/services/custom-software-development',
+      label: 'Home',
+      href: '/',
     },
     {
-      label: 'AI Solutions',
-      href: '/services/ai',
-    },
-    {
-      label: 'Business Automation',
-      href: '/services/automation',
-    },
-    {
-      label: 'Software Consulting',
-      href: '/services/software-consulting',
-    },
-  ],
-
-  company: [
-    {
-      label: 'About',
+      label: 'About Us',
       href: '/about',
     },
     {
-      label: 'Case Studies',
+      label: 'Solutions',
+      href: '/services',
+    },
+    {
+      label: 'Our Work',
       href: '/case-studies',
     },
     {
@@ -32,4 +21,22 @@ export const footer = {
       href: '/contact',
     },
   ],
-}
+
+  connect: [
+    {
+      label: 'LinkedIn',
+      href: 'https://www.linkedin.com/company/wixpearl',
+      external: true,
+    },
+    {
+      label: 'Facebook',
+      href: 'https://www.facebook.com/wixpearl',
+      external: true,
+    },
+    {
+      label: 'Email',
+      href: 'mailto:hello@wixpearl.com',
+      external: false,
+    },
+  ],
+} as const
