@@ -5,7 +5,7 @@ import { Container } from '@/components/layout/container'
 import { Section } from '@/components/layout/section'
 import { SectionHeading } from '@/components/shared/section-heading'
 import { BlurFade } from '@/components/ui/blur-fade'
-import wixpearl3dImage from '@/public/assets/wixpearl-3d-image.png'
+import wixpearl3dGif from '@/public/assets/wixpearl-3d-image.gif'
 
 const differences = [
   {
@@ -50,10 +50,11 @@ export function EngineeringProofSection() {
               {/* 3D Brand Architecture Visual */}
               <div className="mx-auto max-w-xs sm:mx-0 sm:max-w-sm">
                 <Image
-                  src={wixpearl3dImage}
+                  src={wixpearl3dGif}
                   alt="WixPearl 3D digital platform illustration"
                   className="h-auto w-full object-contain"
                   sizes="(min-width: 1024px) 24rem, 20rem"
+                  unoptimized
                 />
               </div>
             </div>
