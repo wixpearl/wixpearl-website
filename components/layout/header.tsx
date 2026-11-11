@@ -22,7 +22,7 @@ export function Header({ className }: HeaderProps) {
     <header
       data-slot="header"
       className={cn(
-        'fixed top-0 right-0 left-0 z-50 pt-2',
+        'fixed top-0 right-0 left-0 z-50',
         'flex flex-col items-center justify-center',
         'before:pointer-events-none before:absolute before:inset-x-0 before:top-0 before:h-px',
         'before:via-foreground/6 before:bg-linear-to-r before:from-transparent before:to-transparent',
@@ -67,15 +67,16 @@ export function Header({ className }: HeaderProps) {
               <Link
                 href="/contact"
                 className={buttonVariants({
-                  variant: 'default',
+                  variant: 'ghost',
                   size: 'default',
                   className: cn(
                     // Elevated primary action with layered shadow
-                    'group relative overflow-hidden',
-                    'shadow-primary/20 shadow-lg',
+                    'group relative overflow-hidden rounded-lg!',
+                    'hover:border-primary/10! hover:shadow-xl',
                     // Smooth hover lift
                     'transition-all duration-300 ease-out',
-                    'hover:shadow-primary/[0.14] hover:-translate-y-px hover:shadow-xl',
+                    'hover:-translate-y-px',
+                    'hover:bg-muted/30 dark:hover:bg-muted/30',
                     'active:translate-y-0 active:shadow-md',
                     // Focus ring for accessibility
                     'focus-visible:ring-ring focus-visible:ring-offset-background focus-visible:ring-2 focus-visible:ring-offset-2'
@@ -92,7 +93,7 @@ export function Header({ className }: HeaderProps) {
                     'group-hover:translate-x-full'
                   )}
                 />
-                <span className="relative">Start a Project</span>
+                <span className="text-primary relative">Start a Project</span>
               </Link>
             </div>
 
